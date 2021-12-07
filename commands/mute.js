@@ -15,12 +15,12 @@ permissions: ["ADMINISTRATOR", "MANAGE_MESSAGES"],
         execute(message, args) {
 
             const target = message.mentions.users.first();
-            if (message.member.permissions.has("MUTE_MEMBERS", "ADMINISTRATOR")) {
+            if (message.member.permissions.has("ADMINISTRATOR")) {
                 if (!args[0]) return message.reply("pls enter member id to be muted");
 
                 if (target) {
 
-                    let mainRole = message.guild.roles.cache.find(role => role.name === 'member');
+                    let mainRole = message.guild.roles.cache.find(role => role.name === 'member','╭───𒌋「🜲・MEMBERS」');
                     let muteRole = message.guild.roles.cache.find(role => role.name === 'mute', 'Muted');
 
 

@@ -10,7 +10,7 @@ module.exports = {
 
 
 
-                if (message.member.permissions.has("MANAGE_MESSAGES", "ADMINISTRATOR")) {
+                if (message.member.permissions.has( "ADMINISTRATOR")) {
 
                         if (!args[0]) return message.reply("pls enter no. of msgs to be cleared");
                         if (isNaN(args[0])) return message.reply("pls enter a real no.!!");

@@ -20,8 +20,8 @@ permissions: ["ADMINISTRATOR", "MANAGE_MESSAGES"],
 
                 if (target) {
 
-                    let mainRole = message.guild.roles.cache.find(role => role.name === 'member','╭───𒌋「🜲・MEMBERS」');
-                    let muteRole = message.guild.roles.cache.find(role => role.name === 'mute', 'Muted');
+                    let mainRole = message.guild.roles.cache.find(role => role.name === '╭───𒌋「🜲・MEMBERS」');
+                    let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 
                     let memberTarget = message.guild.members.cache.get(target.id);

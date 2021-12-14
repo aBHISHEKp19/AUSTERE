@@ -19,7 +19,7 @@ const prefix = '&';
 
 const fs = require('fs');
 
-client.commands.find(a => a.aliases && a.aliases.includes(command)); //alias
+//client.commands.find(a => a.aliases && a.aliases.includes(command)); //alias
 
 client.commands = new Discord.Collection();
 
@@ -67,7 +67,7 @@ client.on('messageCreate', async (message) => {
 
 */
 
-client.on('guildMemberAdd', member => {
+ /*client.on('guildMemberAdd', member => {
 
 
     const createdAt = new Date(member.user.createdAt).getTime();
@@ -80,7 +80,7 @@ client.on('guildMemberAdd', member => {
         message.channel.send(`<@${member.user.id}> ||was an alt account||`);
     }
 
-})
+}) */
 
 
 client.on('messageCreate', message => {
@@ -96,12 +96,12 @@ client.on('messageCreate', message => {
 
         client.commands.get('purge').execute(message, args);
     }
-   
-    if (command === 'newpurge') {
 
-        client.commands.get('newpurge').execute(message, args);
-    }
-    
+   // if (command === 'newpurge') {
+
+       // client.commands.get('newpurge').execute(message, args);
+  //  }
+
     if (command === 'clear') {
 
         client.commands.get('clear').execute(message, args);
@@ -110,7 +110,7 @@ client.on('messageCreate', message => {
 
     if (command === 'hi') {
 
-        client.commands.get('embed').execute(message, args, Discord); //embed
+        client.commands.get('embed').execute(message, Discord); //embed
     }
 
     else if (command === 'kick') {
@@ -132,9 +132,9 @@ client.on('messageCreate', message => {
     }
 
 
-    else if (command === 'newmute') {
-        client.commands.get('newmute').execute(message, args);
-    }
+   // else if (command === 'newmute') {
+      //  client.commands.get('newmute').execute(message, args);
+  //  }
 
     else if (command === 'unmute') {
         client.commands.get('unmute').execute(message, args);

@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
 
     name: 'purge',
     description: "clear messages",
@@ -42,4 +42,4 @@ module.exports = {
         }
     }
 
-}
+} */

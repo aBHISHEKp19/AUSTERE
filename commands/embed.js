@@ -1,16 +1,15 @@
 module.exports = {
 
-    name: 'hi',
-    aliases: ['HI', 'Hi'],
+    name: 'embed',
+   // aliases: ['HI', 'Hi'],
     description: 'embeds!!',
 
-    execute(message, args, Discord) {
+   async execute(message, Discord) {
 
         const newEmbed = new Discord.MessageEmbed()
 
-
             .setColor('#304281')
-            .setitle('NAMASTE')
+            .setTitle('NAMASTE')
 
             //.setURL 
 
@@ -18,7 +17,7 @@ module.exports = {
 
             .addField(
 
-                { name: 'hello', value: 'how are you' },
+                { name: 'hello', value: 'how are you' }
 
 
 
@@ -36,6 +35,7 @@ module.exports = {
 
             .setFooter('bye now');
         message.channel.send(newEmbed);
+            
 
     }
 }

@@ -4,7 +4,7 @@ const { CommandInteraction } = require('discord.js');
 const ms = require('ms');
 
 
-permissions: ["ADMINISTRATOR", "MANAGE_MESSAGES"],
+
     module.exports = {
 
         name: 'mute',

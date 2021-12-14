@@ -24,7 +24,7 @@ module.exports = {
 
 
         else {
-            message.channel.send("`\ tumhe kick krdu?🤨\`");
+            message.channel.send("`\ Aapko kick krdu?🤨\`");
 
         }
 

@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
-
+const ms = require('ms'); //alt
+const timeSpan = ms('335253445555 seconds'); //alt
 
 require('dotenv').config();
 
@@ -18,7 +19,7 @@ const prefix = '&';
 
 const fs = require('fs');
 
-
+client.commands.find(a => a.aliases && a.aliases.includes(command)); //alias
 
 client.commands = new Discord.Collection();
 
@@ -48,8 +49,38 @@ const validPermissions = [
 ]
 
 
+/*let AS = {}; //Anti-Spam
+
+const timeAS = 5; //5 seconds
+const msgsAS = 3; //3 messages
+
+//you will be allowed to send 3 messages in 5 seconds every message after that for the rest of the 5 seconds will be deleted.
+
+client.on('messageCreate', async (message) => {
+    if (message.author.bot || !message.guild) return;
+    if (!AS[message.author.id]) AS[message.author.id] = {};
+    if (!AS[message.author.id][message.guild.id]) AS[message.author.id][message.guild.id] = 1, setTimeout(() => { delete AS[message.author.id][message.guild.id] }, timeAS * 1000);
+    else if (AS[message.author.id][message.guild.id] < msgsAS) AS[message.author.id][message.guild.id]++;
+    else if (AS[message.author.id][message.guild.id] >= msgsAS) await message.delete(), message.reply(`Don't spam!`).then(e => e.delete({ timeout: 5000 }));
+    else AS[message.author.id] = {}, AS[message.author.id][message.guild.id] = 1
+}) 
+
+*/
+
+client.on('guildMemberAdd', member => {
 
 
+    const createdAt = new Date(member.user.createdAt).getTime();
+    const difference = Date.now() - createdAt;
+
+    if (difference < timeSpan) {
+
+        //member.send('you are ann alt account');
+        member.kick('alt account');
+        message.channel.send(`<@${member.user.id}> ||was an alt account||`);
+    }
+
+})
 
 
 client.on('messageCreate', message => {
@@ -65,15 +96,22 @@ client.on('messageCreate', message => {
 
         client.commands.get('purge').execute(message, args);
     }
+   
+    if (command === 'newpurge') {
 
+        client.commands.get('newpurge').execute(message, args);
+    }
+    
     if (command === 'clear') {
 
         client.commands.get('clear').execute(message, args);
     }
 
 
+    if (command === 'hi') {
 
-
+        client.commands.get('embed').execute(message, args, Discord); //embed
+    }
 
     else if (command === 'kick') {
         client.commands.get('kick').execute(message, args);
@@ -91,6 +129,11 @@ client.on('messageCreate', message => {
 
     else if (command === 'mute') {
         client.commands.get('mute').execute(message, args);
+    }
+
+
+    else if (command === 'newmute') {
+        client.commands.get('newmute').execute(message, args);
     }
 
     else if (command === 'unmute') {

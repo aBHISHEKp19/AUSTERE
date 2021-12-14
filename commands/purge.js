@@ -2,7 +2,7 @@ module.exports = {
 
         name: 'purge',
         description: "clear messages",
-        permissions: ["ADMINISTRATOR", "MANAGE_MESSAGES"],
+        
 
         async execute(message, args) {
 
@@ -15,8 +15,8 @@ module.exports = {
                         if (!args[0]) return message.reply("pls enter no. of msgs to be cleared");
                         if (isNaN(args[0])) return message.reply("pls enter a real no.!!");
 
-                        if (args[0] > 100) return message.reply("you cannot clear more than 100 msgs");
-                        if (args[0] < 1) return message.reply("must del atleast one msg");
+                        if (args[0] > 200) return message.reply("you cannot clear more than 100 msgs");
+                        if (args[0] < 1) return message.reply("must delete atleast one msg");
 
                         await message.channel.bulkDelete(parseInt(args[0]) + 1)
 

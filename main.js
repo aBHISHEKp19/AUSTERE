@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
 const ms = require('ms'); //alt
-const { timeSpan } = ms(' 2 days'); //alt
+//const { timeSpan } = ms(' 2 days'); //alt
 const { MessageEmbed } = require('discord.js');
 
 require('dotenv').config();
@@ -68,7 +68,7 @@ client.on('messageCreate', async (message) => {
 
 */
 
-client.on('guildMemberAdd', member => {
+/*client.on('guildMemberAdd', member => {
 
 
    const createdAt = new Date(member.user.createdAt).getTime();
@@ -82,7 +82,7 @@ client.on('guildMemberAdd', member => {
    }
 
 })
-
+*/
 
 client.on('messageCreate', message => {
 

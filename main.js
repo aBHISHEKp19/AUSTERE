@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
 const ms = require('ms'); //alt
-const timeSpan = ms('335253445555 seconds'); //alt
+const { timeSpan } = ms(' 2 days'); //alt
+const { MessageEmbed } = require('discord.js');
 
 require('dotenv').config();
 
@@ -67,20 +68,20 @@ client.on('messageCreate', async (message) => {
 
 */
 
- /*client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
 
 
-    const createdAt = new Date(member.user.createdAt).getTime();
-    const difference = Date.now() - createdAt;
+   const createdAt = new Date(member.user.createdAt).getTime();
+   const difference = Date.now() - createdAt;
 
-    if (difference < timeSpan) {
+   if (difference < timeSpan) {
 
-        //member.send('you are ann alt account');
-        member.kick('alt account');
-        message.channel.send(`<@${member.user.id}> ||was an alt account||`);
-    }
+       //member.send('you are ann alt account');
+       member.kick('alt account');
+       message.channel.send(`<@${member.user.id}> was an alt account`);
+   }
 
-}) */
+})
 
 
 client.on('messageCreate', message => {
@@ -97,10 +98,10 @@ client.on('messageCreate', message => {
         client.commands.get('purge').execute(message, args);
     }
 
-   // if (command === 'newpurge') {
+    // if (command === 'newpurge') {
 
-       // client.commands.get('newpurge').execute(message, args);
-  //  }
+    // client.commands.get('newpurge').execute(message, args);
+    //  }
 
     if (command === 'clear') {
 
@@ -110,7 +111,7 @@ client.on('messageCreate', message => {
 
     if (command === 'hi') {
 
-        client.commands.get('embed').execute(message, Discord); //embed
+        client.commands.get('hi').execute(message, Discord); //embed
     }
 
     else if (command === 'kick') {
@@ -132,9 +133,9 @@ client.on('messageCreate', message => {
     }
 
 
-   // else if (command === 'newmute') {
-      //  client.commands.get('newmute').execute(message, args);
-  //  }
+    // else if (command === 'newmute') {
+    //  client.commands.get('newmute').execute(message, args);
+    //  }
 
     else if (command === 'unmute') {
         client.commands.get('unmute').execute(message, args);

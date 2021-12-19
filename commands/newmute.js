@@ -1,4 +1,7 @@
-/* const { Message } = require('discord.js');
+
+/*
+
+const { Message } = require('discord.js');
 const ms = require('ms');
 
 module.exports =
@@ -11,7 +14,7 @@ module.exports =
      * @param {Message} message 
  
      */
-    /*execute(message, args) {
+  /* async execute(message, args) {
 
         const member = message.mentions.users.first();
 
@@ -19,7 +22,7 @@ module.exports =
             if (!args[0]) return message.reply("pls enter member id to be muted");
 
 
-            const role = message.guild.roles.cache.find(role => role.name.toLowerCase === 'Muted')
+            const role = message.guild.roles.cache.find(role => role.name === 'Muted')
             if (!role) return message.channel.send('Create a mute role first');
 
 

@@ -18,7 +18,7 @@ module.exports = {
             if (!args[0]) return message.reply("pls enter member id to be kicked");
             const membertarger = message.guild.members.cache.get(member.id);
             membertarger.kick();
-            message.channel.send( `<@${membertarger.user.id}> kicked`);
+            message.channel.send( `kick kardiya <@${membertarger.user.id}> ko`);
         }
 
 

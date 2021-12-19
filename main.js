@@ -1,8 +1,11 @@
 const Discord = require('discord.js');
 const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
-const ms = require('ms'); //alt
-//const { timeSpan } = ms(' 2 days'); //alt
+//const ms = require('ms'); //alt
+//const { timeSpan } = ms('2 days'); //alt
+
+//const client = new Discord.Client(); //alt
+
 const { MessageEmbed } = require('discord.js');
 
 require('dotenv').config();
@@ -71,17 +74,43 @@ client.on('messageCreate', async (message) => {
 /*client.on('guildMemberAdd', member => {
 
 
-   const createdAt = new Date(member.user.createdAt).getTime();
-   const difference = Date.now() - createdAt;
+    const createdAt = new Date(member.user.createdAt).getTime();
+    const difference = Date.now() - createdAt;
 
-   if (difference < timeSpan) {
+    if (difference < timeSpan) {
 
-       //member.send('you are ann alt account');
-       member.kick('alt account');
-       message.channel.send(`<@${member.user.id}> was an alt account`);
-   }
+        //member.send('you are ann alt account');
+        member.kick('alt account');
+        message.channel.send(`<@${member.user.id}> was an alt account`);
+    }
 
+})*/
+
+
+/*const alt = require("discord-anti-alt");
+const account = new alt.config({
+    days: 2,// only user who has less than 2 days ages will got kick
+    options: "kick"
+});
+
+//let altChannel = "779585627595210772"; //Channel ID will you set as logs channel
+
+client.on('guildMemberAdd', async member => {
+    let play = account.run(member);
+    let info = alt.profile(member); //Show the information about alt user
+    if (play) {
+
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(info.userTag, info.avatar)
+            .setColor("RANDOM")
+            .addField("Username", info.username)
+            .addField("UserID", info.userID)
+            .addField("User Age", info.userAge)
+            .setTimestamp()
+        return member.guild.channels.send({ embeds: [newEmbed] });
+    }
 })
+
 */
 
 client.on('messageCreate', message => {
@@ -133,9 +162,9 @@ client.on('messageCreate', message => {
     }
 
 
-    // else if (command === 'newmute') {
-    //  client.commands.get('newmute').execute(message, args);
-    //  }
+    else if (command === 'newmute') {
+        client.commands.get('newmute').execute(message, args);
+    }
 
     else if (command === 'unmute') {
         client.commands.get('unmute').execute(message, args);

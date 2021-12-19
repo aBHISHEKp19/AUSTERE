@@ -8,7 +8,7 @@ module.exports = {
 
         const newEmbed =  new Discord.MessageEmbed()
 
-            .setColor('#304281')
+            .setColor('#da004e')
            // .setTitle('NAMASTE')
 
             //.setURL 

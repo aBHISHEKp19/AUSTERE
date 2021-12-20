@@ -127,10 +127,16 @@ client.on('messageCreate', message => {
         client.commands.get('purge').execute(message, args);
     }
 
-    // if (command === 'newpurge') {
+    if (command === 'newpurge') {
 
-    // client.commands.get('newpurge').execute(message, args);
-    //  }
+        client.commands.get('newpurge').execute(message, args);
+    }
+
+    if (command === 'kick') {
+
+        client.commands.get('kick').execute(message, args, Discord);
+    }
+
 
     if (command === 'clear') {
 
@@ -143,13 +149,13 @@ client.on('messageCreate', message => {
         client.commands.get('hi').execute(message, Discord); //embed
     }
 
-    else if (command === 'kick') {
-        client.commands.get('kick').execute(message, args);
-    }
+    /* else if (command === 'kick') {
+         client.commands.get('kick').execute(message, args);
+     }*/
 
 
     else if (command === 'ban') {
-        client.commands.get('ban').execute(message, args);
+        client.commands.get('ban').execute(message, args, Discord);
     }
 
 

@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
 
     name: 'kick',
     description: "kick a member",
@@ -31,4 +31,4 @@ module.exports = {
 
     }
 
-}
+}*/

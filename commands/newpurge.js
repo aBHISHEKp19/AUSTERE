@@ -1,6 +1,6 @@
-/*module.exports = {
+module.exports = {
 
-    name: 'purge',
+    name: 'newpurge',
     description: "clear messages",
     permissions: ["ADMINISTRATOR", "MANAGE_MESSAGES"],
 
@@ -8,12 +8,12 @@
 
 
         const member = message.mentions.members.first();
-        const messgaes = message.channel.message.fetch();
+        const messages = message.channel.messages.fetch();
 
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
             if (member) {
-                const userMessages = (await messgaes).fliter((m) => m.author.id === member.id);
+                const userMessages = (await messages).filter((m) => m.author.id === member.id);
 
                 await message.channel.bulkDelete(userMessages);
 
@@ -42,4 +42,4 @@
         }
     }
 
-} */
+} 

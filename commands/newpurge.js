@@ -15,7 +15,7 @@ module.exports = {
             if (member) {
                 const userMessages = (await messages).filter((m) => m.author.id === member.id);
 
-                await message.channel.bulkDelete(userMessages);
+                await message.channel.bulkDelete(parseInt(userMessages[0] + 1));
 
             }
 

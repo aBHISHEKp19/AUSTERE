@@ -2,15 +2,15 @@ module.exports = {
 
         name: 'purge',
         description: "clear messages",
-        
-
-        async execute(message, args) {
 
 
+        async execute(message, args, Discord) {
 
 
 
-                if (message.member.permissions.has( "ADMINISTRATOR")) {
+
+
+                if (message.member.permissions.has("ADMINISTRATOR")) {
 
                         if (!args[0]) return message.reply("pls enter no. of msgs to be cleared");
                         if (isNaN(args[0])) return message.reply("pls enter a real no.!!");
@@ -25,7 +25,12 @@ module.exports = {
 
 
                 else {
-                        message.channel.send("`\perm leke aao pehle😊\`")
+                        const umm = new Discord.MessageEmbed()
+
+                                .setColor('#40E0D0')
+                                .setTitle("perm leke aao pehle <:abhi_ka_pizza:844790630784827412> ")
+                        message.channel.send({ embeds: [umm] });
+                        // message.channel.send("`\perm leke aao pehle😊\`")
                 }
         }
 

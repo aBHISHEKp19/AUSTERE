@@ -3,7 +3,7 @@ module.exports = {
     name: 'unmute',
     description: "unmute a member",
 
-    execute(message, args) {
+    execute(message, args, Discord) {
 
         const target = message.mentions.users.first();
 
@@ -13,7 +13,7 @@ module.exports = {
             if (target) {
 
                 let mainRole = message.guild.roles.cache.find(role => role.name === '╭───𒌋「🜲・MEMBERS」');
-                let muteRole = message.guild.roles.cache.find(role => role.name ===  'Muted');
+                let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 
                 let memberTarget = message.guild.members.cache.get(target.id);
@@ -27,7 +27,12 @@ module.exports = {
         }
 
         else {
-            message.channel.send('cannot find that member');
+            const lol = new Discord.MessageEmbed()
+
+                .setColor('#40E0D0')
+                .setTitle('cannot find that member')
+            message.channel.send({ embeds: [lol] });
+            /// message.channel.send('cannot find that member');
         }
 
     }

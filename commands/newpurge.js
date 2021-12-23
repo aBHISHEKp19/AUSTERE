@@ -4,7 +4,7 @@ module.exports = {
     description: "clear messages",
     permissions: ["ADMINISTRATOR", "MANAGE_MESSAGES"],
 
-    async execute(message, args) {
+    async execute(message, args,) {
 
 
         const member = message.mentions.members.first();

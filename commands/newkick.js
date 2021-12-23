@@ -6,14 +6,21 @@ module.exports = {
     execute(message, args, Discord) {
 
 
-        const member = message.mentions.users.first();
-       // const author = message.guild.members.cache.get(author.id)
+        const member = message.mentions.users.first() || message.mentions.members.first();
+        // const author = message.author
 
+        const uhhun = new Discord.MessageEmbed()
+
+            .setColor('#40E0D0')
+            .setTitle("Aapko kick krdu? <:whatislife:844660332978765854>")
+    
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
+
+
             if (!args[0]) return message.reply("pls enter member id to be kicked");
-            const membertarger = message.guild.members.cache.get(member.id);
-            
+            // const membertarger = message.guild.members.cache.get(member.id) || message.guild.members.cache.get(args[0]);
+            const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
 
             const newEmbed = new Discord.MessageEmbed()
 
@@ -32,7 +39,7 @@ module.exports = {
                 //.addField("User ID:", `${membertarger.id}`)
 
 
-               //.addField("Moderator", `${author.username}`)
+                //.addField("Moderator", `${author.username}`)
 
                 //.setImage('https://i.pinimg.com/550x/9c/4b/08/9c4b08ecfeb8bb750e89dfba3e0aa08b.jpg')
 
@@ -49,7 +56,9 @@ module.exports = {
 
 
         else {
-            message.channel.send("`\ Aapko kick krdu?🤨\`");
+
+
+            message.channel.send({ embeds: [uhhun] });
 
         }
 

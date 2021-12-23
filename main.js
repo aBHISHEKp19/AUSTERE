@@ -124,7 +124,7 @@ client.on('messageCreate', message => {
 
     if (command === 'purge') {
 
-        client.commands.get('purge').execute(message, args);
+        client.commands.get('purge').execute(message, args, Discord);
     }
 
     if (command === 'newpurge') {
@@ -138,10 +138,7 @@ client.on('messageCreate', message => {
     }
 
 
-    if (command === 'clear') {
 
-        client.commands.get('clear').execute(message, args);
-    }
 
 
     if (command === 'hi') {
@@ -164,7 +161,7 @@ client.on('messageCreate', message => {
     }
 
     else if (command === 'mute') {
-        client.commands.get('mute').execute(message, args);
+        client.commands.get('mute').execute(message, args, Discord);
     }
 
 
@@ -173,7 +170,7 @@ client.on('messageCreate', message => {
     }
 
     else if (command === 'unmute') {
-        client.commands.get('unmute').execute(message, args);
+        client.commands.get('unmute').execute(message, args, Discord);
     }
 
 

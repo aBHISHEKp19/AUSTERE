@@ -7,7 +7,7 @@ module.exports = {
 
 
         const member = message.mentions.users.first() || message.mentions.members.first();
-        // const author = message.author
+        //const author = message.author
 
         const uhhun = new Discord.MessageEmbed()
 
@@ -25,13 +25,13 @@ module.exports = {
             const newEmbed = new Discord.MessageEmbed()
 
                 .setColor('#DFFF00')
-                .setTitle(`kick kardiya ${member.username} ko`)
+                .setTitle(`kick kardiya ${membertarger.username} ko`)
 
 
                 //.setURL 
 
                 //.addField("Tag", `${member.userTag}`)
-                .addField("Created:", `${member.createdAt}`)
+                .addField("Created:", `${membertarger.createdAt}`)
                 .addField("Joined the server on:", `${membertarger.joinedAt}`)
                 //.addField("Avatar", `${member.avatar}`)
                 //.addField("User status:", `${membertarger.presence.status}`)

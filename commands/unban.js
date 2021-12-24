@@ -1,18 +1,18 @@
-module.exports = {
+/*module.exports = {
 
-    name: 'ban',
+    name: 'unban',
     description: "ban a member",
     execute(message, args, Discord) {
 
         const member = message.mentions.users.first() || message.mentions.members.first();
-       
+        
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
-
+            const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
             if (!args[0]) return message.reply("pls enter member id to be banned");
 
-            const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
-            const newEmbed = new Discord.MessageEmbed()
+         
+           /* const newEmbed = new Discord.MessageEmbed()
 
                 .setColor('#DFFF00')
                 .setTitle(`Ban kardiya ${membertarger.username} ko`)
@@ -21,12 +21,12 @@ module.exports = {
                 .setFooter(`User ID: ${membertarger.id}`)
                 .setTimestamp();
 
-            message.channel.send({ embeds: [newEmbed] });
-            // message.channel.send(`banned <@${membertarger.id}> `)
+            message.channel.send({ embeds: [newEmbed] });*/
+       /*  message.channel.send(`unbanned <@${membertarger.id}> `)
 
+            message.guild.members.unban(member.id)
 
-
-            membertarger.ban();
+        
 
 
         }
@@ -44,4 +44,4 @@ module.exports = {
 
     }
 
-}
+} */

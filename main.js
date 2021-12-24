@@ -155,7 +155,10 @@ client.on('messageCreate', message => {
         client.commands.get('ban').execute(message, args, Discord);
     }
 
-
+    else if (command === 'unban') {
+        client.commands.get('unban').execute(message, args, Discord);
+    }
+    
     else if (command === 'appy') {
         message.channel.send('`\ hnji aapka appyy\`');
     }

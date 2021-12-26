@@ -14,7 +14,7 @@ module.exports = {
 
     execute(message, args, Discord) {
 
-        const target = message.mentions.users.first();
+        const target = message.mentions.users.first() || message.mentons.members.first();
         if (message.member.permissions.has("ADMINISTRATOR")) {
             if (!args[0]) return message.reply("pls enter member id to be muted");
 
@@ -24,7 +24,7 @@ module.exports = {
                 let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 
-                let memberTarget = message.guild.members.cache.get(target.id);
+                let memberTarget = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(target.id);
 
                 if (!args[1]) {
 

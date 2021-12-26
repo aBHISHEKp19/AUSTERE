@@ -1,34 +1,46 @@
-/*module.exports = {
+module.exports = {
 
     name: 'unban',
-    description: "ban a member",
+    description: "unban a member",
     execute(message, args, Discord) {
 
-        const member = message.mentions.users.first() || message.mentions.members.first();
-        
+        //const member = message.mentions.users.first() || message.mentions.members.first();
+       
+        let messageArray = message.content.split(" ")
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
-            const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
-            if (!args[0]) return message.reply("pls enter member id to be banned");
-
-         
-           /* const newEmbed = new Discord.MessageEmbed()
-
-                .setColor('#DFFF00')
-                .setTitle(`Ban kardiya ${membertarger.username} ko`)
-                .addField("Created:", `${membertarger.createdAt}`)
-                .addField("Joined the server on:", `${membertarger.joinedAt}`)
-                .setFooter(`User ID: ${membertarger.id}`)
-                .setTimestamp();
-
-            message.channel.send({ embeds: [newEmbed] });*/
-       /*  message.channel.send(`unbanned <@${membertarger.id}> `)
-
-            message.guild.members.unban(member.id)
-
-        
+            let args = messageArray.slice(1);
+            if (message.author.bot || message.channel.type === "dm") return;
 
 
+            let target = message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username.toLowerCase() === args.slice(0).join(" ") || x.user.username === args[0]);
+            // let cmd = messageArray[0];
+
+
+
+             //target =  bot.users.fetch(args[0])
+
+           // if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You need permissions!")
+           // if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("Bot need permissions!")
+
+            const reason = args[1] || "There was no reason!";
+
+            message.guild.members.unban(target, reason)
+
+            message.channel.send(`${target} has been unbanned from the server!`)
+
+
+            /* const newEmbed = new Discord.MessageEmbed()
+            
+                            .setColor('#DFFF00')
+                            .setTitle(`Ban kardiya ${membertarger.tag} ko`)
+                            .addField("Created:", `${membertarger.createdAt}`)
+                            .addField("Joined the server on:", `${membertarger.joinedAt}`)
+                            .setFooter(`User ID: ${membertarger.id}`)
+                            .setTimestamp();
+            
+                        message.channel.send({ embeds: [newEmbed] });
+                        // message.channel.send(`banned <@${membertarger.id}> `) */
         }
 
 
@@ -44,4 +56,4 @@
 
     }
 
-} */
+}

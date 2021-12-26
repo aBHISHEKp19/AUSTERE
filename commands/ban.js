@@ -5,7 +5,7 @@ module.exports = {
     execute(message, args, Discord) {
 
         const member = message.mentions.users.first() || message.mentions.members.first();
-       
+
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
 
@@ -15,16 +15,14 @@ module.exports = {
             const newEmbed = new Discord.MessageEmbed()
 
                 .setColor('#DFFF00')
-                .setTitle(`Ban kardiya ${membertarger.username} ko`)
-                .addField("Created:", `${membertarger.createdAt}`)
+                .setTitle(`Ban kardiya ${membertarger.user.username} ko`)
+                .addField("ID Created:", `${membertarger.user.createdAt}`)
                 .addField("Joined the server on:", `${membertarger.joinedAt}`)
                 .setFooter(`User ID: ${membertarger.id}`)
                 .setTimestamp();
 
             message.channel.send({ embeds: [newEmbed] });
             // message.channel.send(`banned <@${membertarger.id}> `)
-
-
 
             membertarger.ban();
 

@@ -25,13 +25,13 @@ module.exports = {
             const newEmbed = new Discord.MessageEmbed()
 
                 .setColor('#DFFF00')
-                .setTitle(`kick kardiya ${membertarger.username} ko`)
+                .setTitle(`kick kardiya ${membertarger.user.username} ko`)
 
 
                 //.setURL 
-
+ 
                 //.addField("Tag", `${member.userTag}`)
-                .addField("Created:", `${membertarger.createdAt}`)
+                .addField("ID Created:", `${membertarger.user.createdAt}`)
                 .addField("Joined the server on:", `${membertarger.joinedAt}`)
                 //.addField("Avatar", `${member.avatar}`)
                 //.addField("User status:", `${membertarger.presence.status}`)

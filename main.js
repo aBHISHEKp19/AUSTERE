@@ -138,17 +138,11 @@ client.on('messageCreate', message => {
     }
 
 
-
-
-
     if (command === 'hi') {
 
         client.commands.get('hi').execute(message, Discord); //embed
     }
 
-    /* else if (command === 'kick') {
-         client.commands.get('kick').execute(message, args);
-     }*/
 
 
     else if (command === 'ban') {
@@ -162,10 +156,15 @@ client.on('messageCreate', message => {
     else if (command === 'newunban') {
         client.commands.get('newunban').execute(message, args, Discord);
     }
-    
+
     else if (command === 'appy') {
         message.channel.send('`\ hnji aapka appyy\`');
     }
+
+    else if (command === 'dakki') {
+        message.channel.send('`\ guu hai tu\`');
+    }
+
 
     else if (command === 'mute') {
         client.commands.get('mute').execute(message, args, Discord);
@@ -185,6 +184,21 @@ client.on('messageCreate', message => {
         message.channel.send('`\ hnji aapki milky\`');
     }
 
+
+});
+
+
+client.on('messageDelete', message => {
+
+    if (message.mentions.users.first()) {
+
+        const lol = new Discord.MessageEmbed()
+            .setColor('#fb1239')
+            .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
+            .setFooter('ghost ping krna buri baat')
+      return message.channel.send({ embeds: [lol] });
+
+    }
 
 
 });

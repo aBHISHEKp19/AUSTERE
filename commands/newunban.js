@@ -1,39 +1,46 @@
-
-
 module.exports = {
+
     name: 'newunban',
-    description: "This unbans a user",
-    execute(message, args) {
+    description: "ban a member",
+    execute(message, args, Discord) {
+
+        const member = message.mentions.users.first() || message.mentions.members.first();
+
+
         if (message.member.permissions.has("ADMINISTRATOR")) {
-            if (!isNaN(args[0])) {
-                const bannedMember = message.guild.members.cache.get(args[0]) // Get the `member` property instead to recall later.
-                var reason = args.slice(1).join(" ");
-                if (!reason) {
-                    reason = "No reason given!"
-                }
-                if (bannedMember) {
-                    bannedMember
-                    message.guild.members.unban(bannedMember.id, reason)
-                        .then(() => {
-                            embed.setDescription(`Successfully unbanned **${bannedMember.user.tag}**`); // `user` is undefined.
-                            message.channel.send(embed);
-                        })
-                        .catch(err => {
-                            embed.setDescription('I was unable to unban the member');
-                            message.channel.send(embed);
-                            console.error(err);
-                        });
-                } /*else {
-                    embed.setDescription("That user isn't in this guild!");
-                    message.channel.send(embed);
-                }*/
-            } /*else {
-                embed.setDescription("You need to provide an user ID to unban");
-                message.channel.send(embed);
-            }*/
-        } /*else {
-            embed.setDescription("You do not have `BAN_MEMBERS` permissions to unban this member");
-            message.channel.send(embed);
-        }*/
+
+            if (!args[0]) return message.reply("pls enter member id to be banned");
+
+            const membertarger = message.guild.members.cache.get(args[0]);//|| message.guild.members.cache.get(member.id);
+           /* const newEmbed = new Discord.MessageEmbed()
+
+                .setColor('#DFFF00')
+                .setTitle(`Ban kardiya ${membertarger.user.username} ko`)
+                .addField("ID Created:", `${membertarger.user.createdAt}`)
+                .addField("Joined the server on:", `${membertarger.joinedAt}`)
+                .setFooter(`User ID: ${membertarger.id}`)
+                .setTimestamp();
+
+            message.channel.send({ embeds: [newEmbed] });
+            // message.channel.send(`banned <@${membertarger.id}> `)
+
+            membertarger.ban();*/
+
+            message.guild.members.unban(membertarger.user);
+
+        }
+
+
+        else {
+             message.channel.send("`\perm hai nhi chale hai unban karne😏\`");
+           /* const ye = new Discord.MessageEmbed()
+
+                .setColor('#40E0D0')
+                .setTitle("perm hai nhi chale hai ban karne<:WHITE_Boi_BIG_TEETH:844646312867659847>")
+            message.channel.send({ embeds: [ye] });*/
+        }
+
+
     }
+
 }

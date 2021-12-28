@@ -18,6 +18,7 @@ module.exports = {
                 .setTitle(`Ban kardiya ${membertarger.user.username} ko`)
                 .addField("ID Created:", `${membertarger.user.createdAt}`)
                 .addField("Joined the server on:", `${membertarger.joinedAt}`)
+                .setThumbnail(membertarger.displayAvatarURL({ dynamic: true }))
                 .setFooter(`User ID: ${membertarger.id}`)
                 .setTimestamp();
 

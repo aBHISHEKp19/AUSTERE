@@ -37,7 +37,7 @@ module.exports = {
                 //.addField("User status:", `${membertarger.presence.status}`)
                 //.addField("User Age", `${membertarger.userAge}`)
                 //.addField("User ID:", `${membertarger.id}`)
-
+                .setThumbnail(membertarger.displayAvatarURL({ dynamic: true }))
 
                 //.addField("Moderator", `${author.username}`)
 

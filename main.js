@@ -189,16 +189,50 @@ client.on('messageCreate', message => {
 
 
 client.on('messageDelete', message => {
-
+    if (message.author.bot) return;
+    if (message.mentions.users.bot) return;
     if (message.mentions.users.first()) {
 
         const lol = new Discord.MessageEmbed()
             .setColor('#fb1239')
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
             .setFooter('ghost ping krna buri baat')
-      return message.channel.send({ embeds: [lol] });
+
+        /*const channel = Client.channels.cache.get('channelIDhere')
+        channel.send({ embeds: [lol] })*/
+        return message.channel.send({ embeds: [lol] });
 
     }
+
+
+});
+
+
+client.on('messageUpdate', async (oldMessage, newMessage) => {
+
+
+    if (oldMessage.author.bot) return;
+    const editlog = new Discord.MessageEmbed()
+        .setColor('#fb1239')
+        .setTitle('Message Edited!!')
+        .addField("Edited by:", `${oldMessage.author.username}`)
+        .addField('Old message', oldMessage.content)
+        .addField('New message', newMessage.content)
+        .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
+    oldMessage.channel.send({ embeds: [editlog] });
+
+    /*if (oldMessage.mentions.users.first()) {
+
+        const yup = new Discord.MessageEmbed()
+            .setColor('#fb1239')
+            .setDescription(`${oldMessage.author} ghost pinged ${oldMessage.mentions.users.first()}`)
+            .setFooter('ghost ping krna buri baat')
+
+        /* const channel = Client.channels.cache.get('channelIDhere')
+         channel.send({ embeds: [lol] })
+        return oldMessage.channel.send({ embeds: [yup] })
+
+    }*/
 
 
 });

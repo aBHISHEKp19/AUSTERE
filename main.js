@@ -136,6 +136,10 @@ client.on('messageCreate', message => {
 
         client.commands.get('kick').execute(message, args, Discord);
     }
+    if (command === 'rps') {
+
+        client.commands.get('rps').execute(client, message, Discord);
+    }
 
 
     if (command === 'hi') {
@@ -219,6 +223,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .addField('Old message', oldMessage.content)
         .addField('New message', newMessage.content)
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
+        .setFooter('badmosi nahi')
     oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {

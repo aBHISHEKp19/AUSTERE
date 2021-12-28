@@ -136,11 +136,14 @@ client.on('messageCreate', message => {
 
         client.commands.get('kick').execute(message, args, Discord);
     }
-    if (command === 'rps') {
+ if (command === 'rps') {
 
         client.commands.get('rps').execute(client, message, Discord);
-    }
+    }   
+    if (command === 'trigger') {
 
+        client.commands.get('trigger').execute(message, args);
+    }
 
     if (command === 'hi') {
 
@@ -223,7 +226,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .addField('Old message', oldMessage.content)
         .addField('New message', newMessage.content)
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
-        .setFooter('badmosi nahi')
+        .setFooter('**badmosi nahi** <:PitJayega:864427096166891548>')
     oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {

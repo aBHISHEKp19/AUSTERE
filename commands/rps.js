@@ -34,7 +34,6 @@ module.exports = {
         let win = 0; // 0 = Loss; 1 = Tie; 2 = Win
         let userMove;
         
-        // If you already / want to handle this in your interactionCreate.js, ignore this part.
         
         let f = async (interaction) => {
          https://accounts.google.com/b/0/AddMailService   if (!interaction.isButton()) return; // Checking if the interaction is a button

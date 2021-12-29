@@ -136,10 +136,10 @@ client.on('messageCreate', message => {
 
         client.commands.get('kick').execute(message, args, Discord);
     }
- if (command === 'rps') {
+    if (command === 'rps') {
 
         client.commands.get('rps').execute(client, message, Discord);
-    }   
+    }
     if (command === 'trigger') {
 
         client.commands.get('trigger').execute(message, args);
@@ -217,8 +217,8 @@ client.on('messageDelete', message => {
 
 client.on('messageUpdate', async (oldMessage, newMessage) => {
 
-
-    if (oldMessage.author.bot) return;
+    if (oldMessage == newMessage)return;
+        if (oldMessage.author.bot) return;
     const editlog = new Discord.MessageEmbed()
         .setColor('#fb1239')
         .setTitle('Message Edited!!')

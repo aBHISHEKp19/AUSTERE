@@ -226,7 +226,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .addField('Old message', oldMessage.content)
         .addField('New message', newMessage.content)
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
-        .setFooter('**badmosi nahi** <:PitJayega:864427096166891548>')
+        .setFooter(' badmosi nahi ')
     oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {

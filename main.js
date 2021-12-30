@@ -227,7 +227,12 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .addField('New message', newMessage.content)
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
         .setFooter(' badmosi nahi ')
-    oldMessage.channel.send({ embeds: [editlog] });
+       
+        const channel = Client.channels.cache.get('925991578160492624')
+         channel.send({ embeds: [editlog] })
+
+
+   // oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {
 

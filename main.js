@@ -205,9 +205,9 @@ client.on('messageDelete', message => {
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
             .setFooter('ghost ping krna buri baat')
 
-        const channel = Client.channels.cache.get('925991578160492624')
-        channel.send({ embeds: [lol] }) 
-       // return message.channel.send({ embeds: [lol] });
+       const channel = Client.channels.cache.get(`925991578160492624`)
+       channel.send({ embeds: [lol] }) 
+      //  return message.channel.send({ embeds: [lol] });
 
     }
 
@@ -228,11 +228,11 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
         .setFooter(' badmosi nahi ')
        
-        const channel = Client.channels.cache.get('925991578160492624')
-         channel.send({ embeds: [editlog] })
+      //  const channel = Client.channels.cache.get(`925991578160492624`)
+        // channel.send({ embeds: [editlog] })
 
 
-   // oldMessage.channel.send({ embeds: [editlog] });
+    oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {
 

@@ -207,7 +207,7 @@ client.on('messageDelete', message => {
 
         const channel = Client.channels.cache.get('925991578160492624')
         channel.send({ embeds: [lol] }) 
-        return message.channel.send({ embeds: [lol] });
+       // return message.channel.send({ embeds: [lol] });
 
     }
 

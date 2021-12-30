@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
-const { Client } = require("discord.js");
+const { Client, RichEmbed } = require("discord.js");
 const { Intents } = require('discord.js');
 //const ms = require('ms'); //alt
 //const { timeSpan } = ms('2 days'); //alt
-
+const bot = new Client({
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_INTEGRATIONS, Intents.FLAGS.GUILD_WEBHOOKS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING],
+});
 //const client = new Discord.Client(); //alt
 
 const { MessageEmbed } = require('discord.js');
@@ -118,9 +120,30 @@ client.on('messageCreate', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
+    const ARGS = message.content.substring(prefix.length).split(" ");
     const command = args.shift().toLowerCase();
 
+    switch (ARGS[0]) {
+        case 'hello':
 
+            /* const hello = new RichEmbed()
+                 .setTitle('how are you')
+                 .setColor('RANDOM')
+                 .setTimestamp();
+             message.author.send({ embeds: [hello] });*/
+            message.author.send("chal nital tutiya")
+            break;
+        
+          case 'heya':
+
+               /*  const hello = new RichEmbed()
+                     .setTitle('how are you')
+                     .setColor('RANDOM')
+                     .setTimestamp();
+                 message.author.send({ embeds: [hello] });*/
+               message.author.send("hows you")
+                break;
+    }
 
     if (command === 'purge') {
 
@@ -205,9 +228,9 @@ client.on('messageDelete', message => {
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
             .setFooter('ghost ping krna buri baat')
 
-      // const channel = client.channels.cache.get(`925991578160492624`)
-      // channel.send({ embeds: [lol] }) 
-       return message.channel.send({ embeds: [lol] });
+        // const channel = client.channels.cache.get(`925991578160492624`)
+        // channel.send({ embeds: [lol] }) 
+        return message.channel.send({ embeds: [lol] });
 
     }
 
@@ -217,8 +240,8 @@ client.on('messageDelete', message => {
 
 client.on('messageUpdate', async (oldMessage, newMessage) => {
 
-    if (oldMessage == newMessage)return;
-        if (oldMessage.author.bot) return;
+    if (oldMessage == newMessage) return;
+    if (oldMessage.author.bot) return;
     const editlog = new Discord.MessageEmbed()
         .setColor('#fb1239')
         .setTitle('Message Edited!!')
@@ -226,13 +249,13 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .addField('Old message', oldMessage.content)
         .addField('New message', newMessage.content)
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
-       // .setFooter(' badmosi nahi ')
-       .setTimestamp();
-      const channel = client.channels.cache.get(`925991578160492624`)
-        channel.send({ embeds: [editlog] })
+        // .setFooter(' badmosi nahi ')
+        .setTimestamp();
+    const channel = client.channels.cache.get(`925991578160492624`)
+    channel.send({ embeds: [editlog] })
 
 
-  //  oldMessage.channel.send({ embeds: [editlog] });
+    //  oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {
 

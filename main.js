@@ -205,8 +205,8 @@ client.on('messageDelete', message => {
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
             .setFooter('ghost ping krna buri baat')
 
-        /*const channel = Client.channels.cache.get('channelIDhere')
-        channel.send({ embeds: [lol] })*/
+        const channel = Client.channels.cache.get('925991578160492624')
+        channel.send({ embeds: [lol] }) 
         return message.channel.send({ embeds: [lol] });
 
     }

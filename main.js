@@ -209,7 +209,7 @@ client.on('messageCreate', message => {
 
 
     if (command === 'milky') {
-        message.channel.send('`\ hnji aapki milky\`');
+        message.channel.send('`\ hnji aapka appy\`');
     }
 
 
@@ -249,7 +249,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
         // .setFooter(' badmosi nahi ')
         .setTimestamp();
-    const channel = client.channels.cache.get(`925991578160492624`)
+  //  const channel = client.channels.cache.get(`925991578160492624`)
     channel.send({ embeds: [editlog] })
 
 

@@ -1,4 +1,4 @@
-/*
+
 
 const { Message } = require('discord.js');
 const ms = require('ms');
@@ -13,7 +13,7 @@ module.exports =
      * @param {Message} message 
  
      */
-  /* async execute(message, args) {
+ async execute(message, args) {
 
         const member = message.mentions.users.first();
 
@@ -47,4 +47,4 @@ module.exports =
             message.channel.send("`\ bin perm tum beshrm\`");
         }
     }
-} */
+} 

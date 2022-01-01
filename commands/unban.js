@@ -1,5 +1,5 @@
 
-module.exports = {
+/*module.exports = {
 
     name: 'unban',
     description: "unban a member",
@@ -12,7 +12,7 @@ module.exports = {
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
             
-            const bannedUser = banList.find(user => user.id === args[0]);
+            const bannedUser = banList.find(user => user.id === args[1]);
 
             if (!args[0]) return message.reply("pls enter member id to be unbanned");
 
@@ -31,4 +31,4 @@ module.exports = {
 
     }
 
-}
+}*/

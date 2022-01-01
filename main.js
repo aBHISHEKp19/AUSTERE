@@ -133,16 +133,16 @@ client.on('messageCreate', message => {
              message.author.send({ embeds: [hello] });*/
             message.author.send("chal nital tutiya")
             break;
-        
-          case 'heya':
 
-               /*  const hello = new RichEmbed()
-                     .setTitle('how are you')
-                     .setColor('RANDOM')
-                     .setTimestamp();
-                 message.author.send({ embeds: [hello] });*/
-               message.author.send("hows you")
-                break;
+        case 'heya':
+
+            /*  const hello = new RichEmbed()
+                  .setTitle('how are you')
+                  .setColor('RANDOM')
+                  .setTimestamp();
+              message.author.send({ embeds: [hello] });*/
+            message.author.send("hows you")
+            break;
     }
 
     if (command === 'purge') {
@@ -183,12 +183,10 @@ client.on('messageCreate', message => {
         client.commands.get('unban').execute(message, args, Discord);
     }
 
-    else if (command === 'newunban') {
-        client.commands.get('newunban').execute(message, args, Discord);
-    }
+
 
     else if (command === 'appy') {
-        message.channel.send('`\ hnji aapka appyy\`');
+        message.channel.send('`\ hnji aapki milky\`');
     }
 
     else if (command === 'dakki') {

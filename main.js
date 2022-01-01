@@ -250,10 +250,10 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         // .setFooter(' badmosi nahi ')
         .setTimestamp();
   //  const channel = client.channels.cache.get(`925991578160492624`)
-    channel.send({ embeds: [editlog] })
+ //   channel.send({ embeds: [editlog] })
 
 
-    //  oldMessage.channel.send({ embeds: [editlog] });
+     oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {
 

@@ -143,6 +143,15 @@ client.on('messageCreate', message => {
               message.author.send({ embeds: [hello] });*/
             message.author.send("hows you")
             break;
+        case 'milkyy':
+
+            /*  const hello = new RichEmbed()
+                  .setTitle('how are you')
+                  .setColor('RANDOM')
+                  .setTimestamp();
+              message.author.send({ embeds: [hello] });*/
+            message.author.send("meri milky ho")
+            break;
     }
 
     if (command === 'purge') {
@@ -249,11 +258,11 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         .setThumbnail(oldMessage.author.displayAvatarURL({ dynamic: true }))
         // .setFooter(' badmosi nahi ')
         .setTimestamp();
-  //  const channel = client.channels.cache.get(`925991578160492624`)
- //   channel.send({ embeds: [editlog] })
+    //  const channel = client.channels.cache.get(`925991578160492624`)
+    //   channel.send({ embeds: [editlog] })
 
 
-     oldMessage.channel.send({ embeds: [editlog] });
+    oldMessage.channel.send({ embeds: [editlog] });
 
     /*if (oldMessage.mentions.users.first()) {
 

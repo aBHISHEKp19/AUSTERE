@@ -21,7 +21,7 @@ module.exports =
             if (!args[0]) return message.reply("pls enter member id to be muted");
 
 
-            const role = message.guild.roles.cache.find(role => role.name === 'Muted')
+            const role = message.guild.roles.cache.find(role => role.name ==="Muted");
             if (!role) return message.channel.send('Create a mute role first');
 
 

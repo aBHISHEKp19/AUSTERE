@@ -3,17 +3,20 @@ const { Client, RichEmbed } = require("discord.js");
 const { Intents } = require('discord.js');
 //const ms = require('ms'); //alt
 //const { timeSpan } = ms('2 days'); //alt
+
+
+
 const bot = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_INTEGRATIONS, Intents.FLAGS.GUILD_WEBHOOKS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING],
 });
-//const client = new Discord.Client(); //alt
+
+
+
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] }); //alt
 
 const { MessageEmbed } = require('discord.js');
 
 require('dotenv').config();
-
-
-
 
 
 const client = new Client({
@@ -217,10 +220,14 @@ client.on('messageCreate', message => {
     }
 
 
-    if (command === 'milky') {
+    else if (command === 'milky') {
         message.channel.send('`\ hnji aapka appy\`');
     }
-
+  
+  
+    else if (command === 'reactionrole') {
+        client.commands.get('reactionrole').execute(message, args, Discord, client);
+    }
 
 });
 
@@ -245,7 +252,7 @@ client.on('messageDelete', message => {
 });
 
 
-client.on('messageUpdate', async (oldMessage, newMessage) => {
+/*client.on('messageUpdate', async (oldMessage, newMessage) => {
 
     if (oldMessage == newMessage) return;
     if (oldMessage.author.bot) return;
@@ -262,7 +269,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
     //   channel.send({ embeds: [editlog] })
 
 
-    oldMessage.channel.send({ embeds: [editlog] });
+    oldMessage.channel.send({ embeds: [editlog] });*/
 
     /*if (oldMessage.mentions.users.first()) {
 
@@ -275,10 +282,10 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
          channel.send({ embeds: [lol] })
         return oldMessage.channel.send({ embeds: [yup] })
 
-    }*/
+    }
 
 
-});
+});*/
 
 
 client.login(process.env.TOKEN);

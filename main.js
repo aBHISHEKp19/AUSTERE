@@ -18,12 +18,13 @@ const { MessageEmbed } = require('discord.js');
 
 require('dotenv').config();
 
+const client = new Discord.Client({ intents: 32767});
 
-const client = new Discord.Client({
+/*const client = new Discord.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_INTEGRATIONS, Intents.FLAGS.GUILD_WEBHOOKS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING],
     partials: ["MESSAGE", "CHANNEL", "REACTION"]
 
-});
+});*/
 
 
 const prefix = '&';
@@ -132,7 +133,7 @@ client.on('messageCreate', message => {
         case 'hello':
 
             /* const hello = new RichEmbed()
-                 .setTitle('how are you')
+                 .setTitle('how are you') 
                  .setColor('RANDOM')
                  .setTimestamp();
              message.author.send({ embeds: [hello] });*/
@@ -173,6 +174,8 @@ client.on('messageCreate', message => {
 
         client.commands.get('kick').execute(message, args, Discord);
     }
+
+
     if (command === 'rps') {
 
         client.commands.get('rps').execute(client, message, Discord);
@@ -225,8 +228,8 @@ client.on('messageCreate', message => {
     else if (command === 'milky') {
         message.channel.send('`\ hnji aapka appy\`');
     }
-  
-  
+
+
     else if (command === 'reactionrole') {
         client.commands.get('reactionrole').execute(message, args, Discord, client);
     }
@@ -242,8 +245,9 @@ client.on('messageDelete', message => {
         const lol = new Discord.MessageEmbed()
             .setColor('#fb1239')
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
+            .addField('Message Content', message.content)
             .setFooter('ghost ping krna buri baat')
-
+           
         // const channel = client.channels.cache.get(`925991578160492624`)
         // channel.send({ embeds: [lol] }) 
         return message.channel.send({ embeds: [lol] });
@@ -273,18 +277,18 @@ client.on('messageDelete', message => {
 
     oldMessage.channel.send({ embeds: [editlog] });*/
 
-    /*if (oldMessage.mentions.users.first()) {
+/*if (oldMessage.mentions.users.first()) {
 
-        const yup = new Discord.MessageEmbed()
-            .setColor('#fb1239')
-            .setDescription(`${oldMessage.author} ghost pinged ${oldMessage.mentions.users.first()}`)
-            .setFooter('ghost ping krna buri baat')
+    const yup = new Discord.MessageEmbed()
+        .setColor('#fb1239')
+        .setDescription(`${oldMessage.author} ghost pinged ${oldMessage.mentions.users.first()}`)
+        .setFooter('ghost ping krna buri baat')
 
-        /* const channel = Client.channels.cache.get('channelIDhere')
-         channel.send({ embeds: [lol] })
-        return oldMessage.channel.send({ embeds: [yup] })
+    /* const channel = Client.channels.cache.get('channelIDhere')
+     channel.send({ embeds: [lol] })
+    return oldMessage.channel.send({ embeds: [yup] })
 
-    }
+}
 
 
 });*/

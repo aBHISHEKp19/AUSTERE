@@ -13,15 +13,17 @@ module.exports =
      * @param {Message} message 
  
      */
- async execute(message, args) {
+    async execute(message, args) {
 
         const member = message.mentions.users.first();
+
+
 
         if (message.member.permissions.has("ADMINISTRATOR")) {
             if (!args[0]) return message.reply("pls enter member id to be muted");
 
 
-            const role = message.guild.roles.cache.find(role => role.name ==="Muted");
+            const role = message.guild.roles.cache.find(role => role.name === "Muted");
             if (!role) return message.channel.send('Create a mute role first');
 
 
@@ -30,16 +32,16 @@ module.exports =
                 message.channel.send(`<@${member.user.id}> has been muted`);
             }
 
+            member.roles.add(role);
+            message.channel.send(`<@${member.user.id}> has been muted for ${ms(ms(args[1]))}`);
+
+
+            setTimeout(function () {
+
                 member.roles.add(role);
-                message.channel.send(`<@${member.user.id}> has been muted for ${ms(ms(args[1]))}`);
 
+            }, ms(args[1]));
 
-                setTimeout(function () {
-
-                    member.roles.add(role);
-
-                }, ms(args[1])); 
-            
         }
 
 

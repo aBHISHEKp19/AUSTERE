@@ -12,6 +12,9 @@ module.exports = {
             if (!args[0]) return message.reply("pls enter member id to be banned");
 
             const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
+
+            if (membertarger) return message.send("uhhun");
+
             const newEmbed = new Discord.MessageEmbed()
 
                 .setColor('#DFFF00')
@@ -24,7 +27,7 @@ module.exports = {
 
             message.channel.send({ embeds: [newEmbed] });
             // message.channel.send(`banned <@${membertarger.id}> `)
-
+            //  if (membertarger) return message.channel.send('USER ALREADY BANNED');
             membertarger.ban();
 
 

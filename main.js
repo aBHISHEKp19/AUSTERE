@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
-const { Client, RichEmbed } = require("discord.js");
+const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
 //const ms = require('ms'); //alt
 //const { timeSpan } = ms('2 days'); //alt
 
-
+const { MessageEmbed: RichEmbed } = require("discord.js");
 
 const bot = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_INTEGRATIONS, Intents.FLAGS.GUILD_WEBHOOKS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING],
@@ -14,11 +14,11 @@ const bot = new Client({
 
 //const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] }); //alt
 
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed} = require('discord.js');
 
 require('dotenv').config();
 
-const client = new Discord.Client({ intents: 32767});
+const client = new Discord.Client({ intents: 32767 });
 
 /*const client = new Discord.Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_INTEGRATIONS, Intents.FLAGS.GUILD_WEBHOOKS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING],
@@ -64,7 +64,7 @@ const validPermissions = [
 /*let AS = {}; //Anti-Spam
 
 const timeAS = 5; //5 seconds
-const msgsAS = 3; //3 messages
+const messagesAS = 3; //3 messages
 
 //you will be allowed to send 3 messages in 5 seconds every message after that for the rest of the 5 seconds will be deleted.
 
@@ -72,8 +72,8 @@ client.on('messageCreate', async (message) => {
     if (message.author.bot || !message.guild) return;
     if (!AS[message.author.id]) AS[message.author.id] = {};
     if (!AS[message.author.id][message.guild.id]) AS[message.author.id][message.guild.id] = 1, setTimeout(() => { delete AS[message.author.id][message.guild.id] }, timeAS * 1000);
-    else if (AS[message.author.id][message.guild.id] < msgsAS) AS[message.author.id][message.guild.id]++;
-    else if (AS[message.author.id][message.guild.id] >= msgsAS) await message.delete(), message.reply(`Don't spam!`).then(e => e.delete({ timeout: 5000 }));
+    else if (AS[message.author.id][message.guild.id] < messagesAS) AS[message.author.id][message.guild.id]++;
+    else if (AS[message.author.id][message.guild.id] >= messagesAS) await message.delete(), message.reply(`Don't spam!`).then(e => e.delete({ timeout: 5000 }));
     else AS[message.author.id] = {}, AS[message.author.id][message.guild.id] = 1
 }) 
 
@@ -123,6 +123,20 @@ client.on('guildMemberAdd', async member => {
 
 client.on('messageCreate', message => {
 
+    if(message.content.startsWith(`${prefix}unbanall`)) {
+        message.guild.bans.fetch()
+        .then(bans => {
+            bans.forEach(user => {
+                /*
+                Debug works
+                console.log(user.id);
+                */
+                message.guild.unban(user.id);
+            });
+        })
+        .catch(e => console.log(e));
+    }
+
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -132,12 +146,12 @@ client.on('messageCreate', message => {
     switch (ARGS[0]) {
         case 'hello':
 
-            /* const hello = new RichEmbed()
-                 .setTitle('how are you') 
-                 .setColor('RANDOM')
-                 .setTimestamp();
-             message.author.send({ embeds: [hello] });*/
-            message.author.send("chal nital tutiya")
+            const llo = new RichEmbed()
+                .setTitle('chal nital tutiya')
+                .setColor('RANDOM')
+                .setTimestamp();
+            message.author.send({ embeds: [llo] });
+            //  message.author.send("chal nital tutiya")
             break;
 
         case 'heya':
@@ -151,12 +165,12 @@ client.on('messageCreate', message => {
             break;
         case 'milkyy':
 
-            /*  const hello = new RichEmbed()
-                  .setTitle('how are you')
-                  .setColor('RANDOM')
-                  .setTimestamp();
-              message.author.send({ embeds: [hello] });*/
-            message.author.send("meri milky ho")
+            const helo = new RichEmbed()
+                .setTitle('meri milky ho')
+                .setColor('RANDOM')
+                .setTimestamp();
+            message.author.send({ embeds: [helo] });
+            //   message.author.send("meri milky ho")
             break;
     }
 
@@ -247,7 +261,7 @@ client.on('messageDelete', message => {
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
             .addField('Message Content', message.content)
             .setFooter('ghost ping krna buri baat')
-           
+
         // const channel = client.channels.cache.get(`925991578160492624`)
         // channel.send({ embeds: [lol] }) 
         return message.channel.send({ embeds: [lol] });

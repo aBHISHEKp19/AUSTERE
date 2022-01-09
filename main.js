@@ -14,7 +14,7 @@ const bot = new Client({
 
 //const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] }); //alt
 
-const { MessageEmbed} = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 require('dotenv').config();
 
@@ -121,21 +121,33 @@ client.on('guildMemberAdd', async member => {
 
 */
 
+
+client.on('messageCreate', message => {
+    if (message.content === prefix + 'ping') {
+        message.channel.send('calculating ping....').then(async (msg) => {
+           // msg.delete()
+            msg.edit(`🎈Bot Latency ${msg.createdTimestamp - message.createdTimestamp}ms.\n 🎈API Latency: ${client.ws.ping}ms`);
+        })
+    }
+});
+
+
+
 client.on('messageCreate', message => {
 
-    if(message.content.startsWith(`${prefix}unbanall`)) {
-        message.guild.bans.fetch()
-        .then(bans => {
-            bans.forEach(user => {
-                /*
-                Debug works
-                console.log(user.id);
-                */
-                message.guild.unban(user.id);
-            });
-        })
-        .catch(e => console.log(e));
-    }
+    /* if(message.content.startsWith(`${prefix}unbanall`)) {
+         message.guild.bans.fetch()
+         .then(bans => {
+             bans.forEach(user => {
+                 /*
+                 Debug works
+                 console.log(user.id);
+                 */
+    /*  message.guild.members.unban(user.id);
+  });
+})
+.catch(e => console.log(e));
+}*/
 
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -248,6 +260,10 @@ client.on('messageCreate', message => {
         client.commands.get('reactionrole').execute(message, args, Discord, client);
     }
 
+    /*   else if (command === 'ping') {
+           client.commands.get('ping').execute(message, args,  client);
+       }*/
+
 });
 
 
@@ -306,6 +322,45 @@ client.on('messageDelete', message => {
 
 
 });*/
+
+
+client.on('messageReactionAdd', async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+    if (user.bot) return;
+    if (!reaction.message.guild) return;
+    if (reaction.message.channel.id === channel) {
+        if (reaction.emoji.name === appyemoji) {
+            await reaction.message.guild.members.cache.get(user.id).roles.add(appyrole);
+        }
+        if (reaction.emoji.name === milkyemoji) {
+            await reaction.message.guild.members.cache.get(user.id).roles.add(milkyrole);
+        }
+    }
+    else {
+        return;
+    }
+
+});
+
+client.on('messageReactionRemove', async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+    if (user.bot) return;
+    if (!reaction.message.guild) return;
+    if (reaction.message.channel.id === channel) {
+        if (reaction.emoji.name === appyemoji) {
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(appyrole);
+        }
+        if (reaction.emoji.name === milkyemoji) {
+            await reaction.message.guild.members.cache.get(user.id).roles.remove(milkyrole);
+        }
+    }
+    else {
+        return;
+    }
+
+});
 
 
 client.login(process.env.TOKEN);

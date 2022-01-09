@@ -20,6 +20,7 @@ module.exports = {
                 {name: 'hello', value: 'how are you'}
 
                 // { name: 'hello', value: 'how are you' },
+               // { name: 'Inline field title', value: 'Some value here', inline: true },
             )
 
 

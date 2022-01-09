@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { client } = require("discord.js");
+
 module.exports = {
     name: 'reactionrole',
     description: 'reactions',
@@ -23,8 +23,11 @@ module.exports = {
         let newMessageEmbed = await message.channel.send({ embeds: [roleembed] });
         newMessageEmbed.react(appyemoji);
         newMessageEmbed.react(milkyemoji);
+        const { Client } = require("discord.js");
 
-        client.on('messageReactionAdd', async (reaction, user) => {
+
+
+        Client.on('messageReactionAdd', async (reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
             if (reaction.partial) await reaction.fetch();
             if (user.bot) return;
@@ -43,7 +46,7 @@ module.exports = {
         
         });
         
-        client.on('messageReactionRemove', async (reaction, user) => {
+        Client.on('messageReactionRemove', async (reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
             if (reaction.partial) await reaction.fetch();
             if (user.bot) return;
@@ -60,7 +63,7 @@ module.exports = {
                 return;
             }
         
-        });
+        }); 
 
         
 

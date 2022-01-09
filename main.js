@@ -215,6 +215,10 @@ client.on('messageCreate', message => {
 
         client.commands.get('hi').execute(message, Discord); //embed
     }
+    if (command === 'weather') {
+
+        client.commands.get('weather').execute(client, message, args); //embed
+    }
 
 
 

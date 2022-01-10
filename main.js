@@ -124,9 +124,18 @@ client.on('guildMemberAdd', async member => {
 
 client.on('messageCreate', message => {
     if (message.content === prefix + 'ping') {
-        message.channel.send('calculating ping....').then(async (msg) => {
-           // msg.delete()
-            msg.edit(`🎈Bot Latency ${msg.createdTimestamp - message.createdTimestamp}ms.\n 🎈API Latency: ${client.ws.ping}ms`);
+        (async (msg) => {
+            // msg.delete()
+            //   msg.edit(`🎈Bot Latency ${msg.createdTimestamp - message.createdTimestamp}ms.\n 🎈API Latency: ${client.ws.ping}ms`);
+
+
+            const lil = new Discord.MessageEmbed()
+
+                .setDescription("**STATUS**")
+                .addField('🎈Message Latency', `${msg.createdTimestamp - message.createdTimestamp}ms`)
+                .addField('🎈API Latency', `${client.ws.ping}ms`)
+                .setTimestamp();
+            msg.channel.send({ embeds: [lil] });
         })
     }
 });

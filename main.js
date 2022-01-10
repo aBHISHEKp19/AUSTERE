@@ -126,13 +126,13 @@ client.on('messageCreate', message => {
     if (message.content === prefix + 'ping') {
 
         message.channel.send('calculating ping....').then(async (msg) => {
-           // msg.delete()
-           const lil = new Discord.MessageEmbed()
-    
-           .setDescription("**STATUS**")
-           .addField('Message Latency🎈', `${msg.createdTimestamp - message.createdTimestamp}ms`)
-           .addField('API Latency🎈', `${client.ws.ping}ms`)
-           .setTimestamp()
+            // msg.delete()
+            const lil = new Discord.MessageEmbed()
+
+                .setDescription("**STATUS**")
+                .addField('Message Latency🎈', `${msg.createdTimestamp - message.createdTimestamp}ms`)
+                .addField('API Latency🎈', `${client.ws.ping}ms`)
+                .setTimestamp()
             msg.edit({ embeds: [lil] });
         })
     }
@@ -141,6 +141,10 @@ client.on('messageCreate', message => {
 
 
 client.on('messageCreate', message => {
+
+    if (message.content === prefix + 'stats') {
+        return message.reply(`Server count: ${client.guilds.cache.size}.`);
+    }
 
     /* if(message.content.startsWith(`${prefix}unbanall`)) {
          message.guild.bans.fetch()
@@ -197,6 +201,8 @@ client.on('messageCreate', message => {
 
         client.commands.get('purge').execute(message, args, Discord);
     }
+
+
 
     if (command === 'newpurge') {
 

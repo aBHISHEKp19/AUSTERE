@@ -129,7 +129,7 @@ client.on('messageCreate', message => {
             // msg.delete()
             const lil = new Discord.MessageEmbed()
 
-                .setDescription("**STATUS**")
+                .setDescription(" <a:Tick:862631036796928020>**STATUS**")
                 .addField('Message Latency🎈', `${msg.createdTimestamp - message.createdTimestamp}ms`)
                 .addField('API Latency🎈', `${client.ws.ping}ms`)
                 .setTimestamp()

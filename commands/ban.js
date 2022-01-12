@@ -13,7 +13,7 @@ module.exports = {
 
             const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
 
-            if (membertarger) return message.send("uhhun");
+           // if (!membertarger) return message.channel.send("uhhun");
 
             const newEmbed = new Discord.MessageEmbed()
 

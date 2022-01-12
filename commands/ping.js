@@ -1,17 +1,22 @@
-/*
+/*const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'ping',
     description: 'checks pings',
 
-    callback: (message , client) => {
+    execute(message, args, Discord) {
 
-        message.reply('Calculating ping...').then((resultMessage) => {
-            const ping = resultMessage.createdTimestamp - message.createdTimestamp
 
-            resultMessage.edit(`Bot latency:${ping} , API Latency: ${client.ws.ping}`)
-        })
+        async (msg) => {
+            // msg.delete()
+            const lil = new MessageEmbed()
 
-    },
+                .setDescription("**STATUS**")
+                .addField('Message Latency🎈', `${msg.createdTimestamp - message.createdTimestamp}ms`)
+                .addField('API Latency🎈', `${client.ws.ping}ms`)
+                .setTimestamp()
+            msg.edit({ embeds: [lil] });
+        }
+    }
 
 
 }*/

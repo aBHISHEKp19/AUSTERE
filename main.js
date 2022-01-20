@@ -48,8 +48,6 @@ for (const file of commandFiles) {
 client.once('ready', () => { console.log('austere is here'); });
 
 
-
-
 const validPermissions = [
 
     "ADMINISTRATOR",
@@ -121,166 +119,173 @@ client.on('guildMemberAdd', async member => {
 
 */
 
-
 client.on('messageCreate', message => {
     if (message.content === prefix + 'ping') {
 
-       // msg.delete()
-            const lil = new Discord.MessageEmbed()
+        // msg.delete()
+        const lil = new Discord.MessageEmbed()
 
-                .setDescription("**STATUS**")
-                .addField('Message Latency🎈', `${Date.now() - message.createdTimestamp}ms`)
-                .addField('API Latency🎈', `${client.ws.ping}ms`)
-                .setTimestamp()
-            message.channel.send({ embeds: [lil] });
-   
-    } 
+            .setDescription("**STATUS**")
+            .addField('Message Latency🎈', `${Date.now() - message.createdTimestamp}ms`)
+            .addField('API Latency🎈', `${client.ws.ping}ms`)
+            .setTimestamp()
+        message.channel.send({ embeds: [lil] });
+
+    }
+
 });
 
 
 
 client.on('messageCreate', message => {
+
+    if (message.content === prefix + 'unbanall') {
+        message.guild.bans.fetch()
+            .then(bans => {
+                bans.forEach(user => {
+                    /*
+                    Debug works
+                    console.log(user.id);
+                    */
+                    message.guild.members.unban(user.id);   
+                })
+            
+            })
+
+        }
+
 
     if (message.content === prefix + 'stats') {
         return message.reply(`Server count: ${client.guilds.cache.size}.`);
     }
 
-    /* if(message.content.startsWith(`${prefix}unbanall`)) {
-         message.guild.bans.fetch()
-         .then(bans => {
-             bans.forEach(user => {
-                 /*
-                 Debug works
-                 console.log(user.id);
-                 */
-    /*  message.guild.members.unban(user.id);
-  });
-})
-.catch(e => console.log(e));
-}*/
-
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const ARGS = message.content.substring(prefix.length).split(" ");
-    const command = args.shift().toLowerCase();
-
-    switch (ARGS[0]) {
-        case 'hello':
-
-            const llo = new RichEmbed()
-                .setTitle('chal nital tutiya')
-                .setColor('RANDOM')
-                .setTimestamp();
-            message.author.send({ embeds: [llo] });
-            //  message.author.send("chal nital tutiya")
-            break;
-
-        case 'heya':
-
-            /*  const hello = new RichEmbed()
-                  .setTitle('how are you')
-                  .setColor('RANDOM')
-                  .setTimestamp();
-              message.author.send({ embeds: [hello] });*/
-            message.author.send("hows you")
-            break;
-        case 'milkyy':
-
-            const helo = new RichEmbed()
-                .setTitle('meri milky ho')
-                .setColor('RANDOM')
-                .setTimestamp();
-            message.author.send({ embeds: [helo] });
-            //   message.author.send("meri milky ho")
-            break;
-    }
-
-    if (command === 'purge') {
-
-        client.commands.get('purge').execute(message, args, Discord);
-    }
 
 
+        if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    if (command === 'newpurge') {
+        const args = message.content.slice(prefix.length).split(/ +/);
+        const ARGS = message.content.substring(prefix.length).split(" ");
+        const command = args.shift().toLowerCase();
 
-        client.commands.get('newpurge').execute(message, args);
-    }
+        switch (ARGS[0]) {
+            case 'hello':
 
-    if (command === 'kick') {
+                const llo = new RichEmbed()
+                    .setTitle('chal nital tutiya')
+                    .setColor('RANDOM')
+                    .setTimestamp();
+                message.author.send({ embeds: [llo] });
+                //  message.author.send("chal nital tutiya")
+                break;
 
-        client.commands.get('kick').execute(message, args, Discord);
-    }
+            case 'heya':
+
+                /*  const hello = new RichEmbed()
+                      .setTitle('how are you')
+                      .setColor('RANDOM')
+                      .setTimestamp();
+                  message.author.send({ embeds: [hello] });*/
+                message.author.send("hows you")
+                break;
+            case 'milkyy':
+
+                const helo = new RichEmbed()
+                    .setTitle('meri milky ho')
+                    .setColor('RANDOM')
+                    .setTimestamp();
+                message.author.send({ embeds: [helo] });
+                //   message.author.send("meri milky ho")
+                break;
+        }
+
+        if (command === 'purge') {
+
+            client.commands.get('purge').execute(message, args, Discord);
+        }
 
 
-    if (command === 'rps') {
+        if (command === 'join') {
+            client.commands.get('join').execute(message, args);
+        }
 
-        client.commands.get('rps').execute(client, message, Discord);
-    }
-    if (command === 'trigger') {
+        if (command === 'newpurge') {
 
-        client.commands.get('trigger').execute(message, args);
-    }
+            client.commands.get('newpurge').execute(message, args);
+        }
 
-    if (command === 'hi') {
+        if (command === 'kick') {
 
-        client.commands.get('hi').execute(message, Discord); //embed
-    }
-    if (command === 'weather') {
+            client.commands.get('kick').execute(message, args, Discord);
+        }
 
-        client.commands.get('weather').execute(client, message, args); //embed
-    }
+
+        if (command === 'rps') {
+
+            client.commands.get('rps').execute(client, message, Discord);
+        }
+        if (command === 'trigger') {
+
+            client.commands.get('trigger').execute(message, args);
+        }
+
+        if (command === 'hi') {
+
+            client.commands.get('hi').execute(message, Discord); //embed
+        }
+        if (command === 'weather') {
+
+            client.commands.get('weather').execute(client, message, args); //embed
+        }
 
 
 
-    else if (command === 'ban') {
-        client.commands.get('ban').execute(message, args, Discord);
-    }
+        else if (command === 'ban') {
+            client.commands.get('ban').execute(message, args, Discord);
+        }
 
-    else if (command === 'unban') {
-        client.commands.get('unban').execute(message, args, Discord);
-    }
-
-
-
-    else if (command === 'appy') {
-        message.channel.send('`\ hnji aapki milky\`');
-    }
-
-    else if (command === 'dakki') {
-        message.channel.send('`\ guu hai tu\`');
-    }
+        else if (command === 'unban') {
+            client.commands.get('unban').execute(message, args, Discord);
+        }
 
 
-    else if (command === 'mute') {
-        client.commands.get('mute').execute(message, args, Discord);
-    }
+
+        else if (command === 'appy') {
+            message.channel.send('`\ hnji aapki milky\`');
+        }
+
+        else if (command === 'dakki') {
+            message.channel.send('`\ guu hai tu\`');
+        }
 
 
-    else if (command === 'newmute') {
-        client.commands.get('newmute').execute(message, args);
-    }
-
-    else if (command === 'unmute') {
-        client.commands.get('unmute').execute(message, args, Discord);
-    }
+        else if (command === 'mute') {
+            client.commands.get('mute').execute(message, args, Discord);
+        }
 
 
-    else if (command === 'milky') {
-        message.channel.send('`\ hnji aapka appy\`');
-    }
+        else if (command === 'newmute') {
+            client.commands.get('newmute').execute(message, args);
+        }
+
+        else if (command === 'unmute') {
+            client.commands.get('unmute').execute(message, args, Discord);
+        }
 
 
-    else if (command === 'reactionrole') {
-        client.commands.get('reactionrole').execute(message, args, Discord, client);
-    }
+        else if (command === 'milky') {
+            message.channel.send('`\ hnji aapka appy\`');
+        }
 
-  /*  else if (command === 'ping') {
-        client.commands.get('ping').execute(message, args, Discord);
-    }*/
 
-});
+        else if (command === 'reactionrole') {
+            client.commands.get('reactionrole').execute(message, args, Discord, client);
+        }
+
+        /*  else if (command === 'ping') {
+              client.commands.get('ping').execute(message, args, Discord);
+          }*/
+
+    });
 
 
 client.on('messageDelete', message => {

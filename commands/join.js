@@ -5,7 +5,7 @@ module.exports = {
     description: 'Joins ',
     async execute(message, args) {
 
-        if (!message.member.voice.channel.id) return message.channel.send('You need to be in a channel to execute this command!');
+       // if (!message.member.voice.channel.id) return message.channel.send('You need to be in a channel to execute this command!');
         if (!args[0]) return message.channel.send("lol");
 
         const connection = joinVoiceChannel({

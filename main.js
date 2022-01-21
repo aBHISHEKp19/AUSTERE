@@ -7,9 +7,23 @@ const { Intents } = require('discord.js');
 const { MessageEmbed: RichEmbed } = require("discord.js");
 
 const bot = new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Intents.FLAGS.GUILD_INTEGRATIONS, Intents.FLAGS.GUILD_WEBHOOKS, Intents.FLAGS.GUILD_INVITES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGE_TYPING, Intents.FLAGS.DIRECT_MESSAGES, Intents.FLAGS.DIRECT_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGE_TYPING],
-});
+    intents: [Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_BANS,
+    Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+    Intents.FLAGS.GUILD_INTEGRATIONS,
+    Intents.FLAGS.GUILD_WEBHOOKS,
+    Intents.FLAGS.GUILD_INVITES,
+    Intents.FLAGS.GUILD_VOICE_STATES,
+    Intents.FLAGS.GUILD_PRESENCES,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.GUILD_MESSAGE_TYPING,
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGE_TYPING],
 
+});
 
 
 //const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] }); //alt
@@ -25,7 +39,6 @@ const client = new Discord.Client({ intents: 32767 });
     partials: ["MESSAGE", "CHANNEL", "REACTION"]
 
 });*/
-
 
 const prefix = '&';
 
@@ -136,7 +149,6 @@ client.on('messageCreate', message => {
 });
 
 
-
 client.on('messageCreate', message => {
 
     if (message.content === prefix + 'unbanall') {
@@ -147,12 +159,11 @@ client.on('messageCreate', message => {
                     Debug works
                     console.log(user.id);
                     */
-                    message.guild.members.unban(user.id);   
+                    message.guild.members.unban(user.id);
                 })
-            
-            })
 
-        }
+            })
+    }
 
 
     if (message.content === prefix + 'stats') {
@@ -160,139 +171,127 @@ client.on('messageCreate', message => {
     }
 
 
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-        if (!message.content.startsWith(prefix) || message.author.bot) return;
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const ARGS = message.content.substring(prefix.length).split(" ");
+    const command = args.shift().toLowerCase();
 
-        const args = message.content.slice(prefix.length).split(/ +/);
-        const ARGS = message.content.substring(prefix.length).split(" ");
-        const command = args.shift().toLowerCase();
+    switch (ARGS[0]) {
+        case 'hello':
 
-        switch (ARGS[0]) {
-            case 'hello':
+            const llo = new RichEmbed()
+                .setTitle('chal nital tutiya')
+                .setColor('RANDOM')
+                .setTimestamp();
+            message.author.send({ embeds: [llo] });
+            //  message.author.send("chal nital tutiya")
+            break;
 
-                const llo = new RichEmbed()
-                    .setTitle('chal nital tutiya')
-                    .setColor('RANDOM')
-                    .setTimestamp();
-                message.author.send({ embeds: [llo] });
-                //  message.author.send("chal nital tutiya")
-                break;
+        case 'heya':
 
-            case 'heya':
+            /*  const hello = new RichEmbed()
+                  .setTitle('how are you')
+                  .setColor('RANDOM')
+                  .setTimestamp();
+              message.author.send({ embeds: [hello] });*/
+            message.author.send("hows you")
+            break;
+        case 'milkyy':
 
-                /*  const hello = new RichEmbed()
-                      .setTitle('how are you')
-                      .setColor('RANDOM')
-                      .setTimestamp();
-                  message.author.send({ embeds: [hello] });*/
-                message.author.send("hows you")
-                break;
-            case 'milkyy':
+            const helo = new RichEmbed()
+                .setTitle('meri milky ho')
+                .setColor('RANDOM')
+                .setTimestamp();
+            message.author.send({ embeds: [helo] });
+            //   message.author.send("meri milky ho")
+            break;
+    }
 
-                const helo = new RichEmbed()
-                    .setTitle('meri milky ho')
-                    .setColor('RANDOM')
-                    .setTimestamp();
-                message.author.send({ embeds: [helo] });
-                //   message.author.send("meri milky ho")
-                break;
-        }
+    if (command === 'purge') {
+        client.commands.get('purge').execute(message, args, Discord);
+    }
 
-        if (command === 'purge') {
+    if (command === 'join') {
+        client.commands.get('join').execute(message, args);
+    }
 
-            client.commands.get('purge').execute(message, args, Discord);
-        }
+    if (command === 'newpurge') {
+        client.commands.get('newpurge').execute(message, args);
+    }
 
+    if (command === 'kick') {
+        client.commands.get('kick').execute(message, args, Discord);
+    }
 
-        if (command === 'join') {
-            client.commands.get('join').execute(message, args);
-        }
+    if (command === 'rps') {
+        client.commands.get('rps').execute(client, message, Discord);
+    }
 
-        if (command === 'newpurge') {
+    if (command === 'trigger') {
+        client.commands.get('trigger').execute(message, args);
+    }
 
-            client.commands.get('newpurge').execute(message, args);
-        }
+    if (command === 'hi') {
+        client.commands.get('hi').execute(message, Discord); //embed
+    }
 
-        if (command === 'kick') {
+    if (command === 'weather') {
 
-            client.commands.get('kick').execute(message, args, Discord);
-        }
+        client.commands.get('weather').execute(client, message, args); //embed
+    }
 
+    else if (command === 'ban') {
+        client.commands.get('ban').execute(message, args, Discord);
+    }
 
-        if (command === 'rps') {
+    else if (command === 'unban') {
+        client.commands.get('unban').execute(message, args, Discord);
+    }
 
-            client.commands.get('rps').execute(client, message, Discord);
-        }
-        if (command === 'trigger') {
+    else if (command === 'appy') {
+        message.channel.send('`\ hnji aapki milky\`');
+    }
 
-            client.commands.get('trigger').execute(message, args);
-        }
+    else if (command === 'dakki') {
+        message.channel.send('`\ guu hai tu\`');
+    }
 
-        if (command === 'hi') {
+    else if (command === 'mute') {
+        client.commands.get('mute').execute(message, args, Discord);
+    }
 
-            client.commands.get('hi').execute(message, Discord); //embed
-        }
-        if (command === 'weather') {
+    else if (command === 'newmute') {
+        client.commands.get('newmute').execute(message, args);
+    }
 
-            client.commands.get('weather').execute(client, message, args); //embed
-        }
+    else if (command === 'unmute') {
+        client.commands.get('unmute').execute(message, args, Discord);
+    }
 
+    else if (command === 'milky') {
+        message.channel.send('`\ hnji aapka appy\`');
+    }
 
+    else if (command === 'reactionrole') {
+        client.commands.get('reactionrole').execute(message, args, Discord, client);
+    }
 
-        else if (command === 'ban') {
-            client.commands.get('ban').execute(message, args, Discord);
-        }
+    /*  else if (command === 'ping') {
+          client.commands.get('ping').execute(message, args, Discord);
+      }*/
 
-        else if (command === 'unban') {
-            client.commands.get('unban').execute(message, args, Discord);
-        }
-
-
-
-        else if (command === 'appy') {
-            message.channel.send('`\ hnji aapki milky\`');
-        }
-
-        else if (command === 'dakki') {
-            message.channel.send('`\ guu hai tu\`');
-        }
-
-
-        else if (command === 'mute') {
-            client.commands.get('mute').execute(message, args, Discord);
-        }
-
-
-        else if (command === 'newmute') {
-            client.commands.get('newmute').execute(message, args);
-        }
-
-        else if (command === 'unmute') {
-            client.commands.get('unmute').execute(message, args, Discord);
-        }
-
-
-        else if (command === 'milky') {
-            message.channel.send('`\ hnji aapka appy\`');
-        }
-
-
-        else if (command === 'reactionrole') {
-            client.commands.get('reactionrole').execute(message, args, Discord, client);
-        }
-
-        /*  else if (command === 'ping') {
-              client.commands.get('ping').execute(message, args, Discord);
-          }*/
-
-    });
+});
 
 
 client.on('messageDelete', message => {
     if (message.author.bot) return;
     if (message.mentions.users.bot) return;
+    if (message.mentions.has(client.user.id)) return;
+   
     if (message.mentions.users.first()) {
-
+       
+    
         const lol = new Discord.MessageEmbed()
             .setColor('#fb1239')
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
@@ -304,8 +303,6 @@ client.on('messageDelete', message => {
         return message.channel.send({ embeds: [lol] });
 
     }
-
-
 });
 
 
@@ -343,9 +340,6 @@ client.on('messageDelete', message => {
 
 
 });*/
-
-
-
 
 
 client.login(process.env.TOKEN);

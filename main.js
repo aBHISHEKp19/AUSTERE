@@ -250,11 +250,11 @@ client.on('messageCreate', message => {
         client.commands.get('unban').execute(message, args, Discord);
     }
 
-    else if (message.content === 'appy') {
+    else if (command === 'appy') {
         message.channel.send('`\ hnji aapki milky\`');
     }
 
-    else if (message.content === 'dakki') {
+    else if (command  === 'dakki') {
         message.channel.send('`\ guu hai tu\`');
     }
 
@@ -269,8 +269,8 @@ client.on('messageCreate', message => {
     else if (command === 'unmute') {
         client.commands.get('unmute').execute(message, args, Discord);
     }
-
-    else if (message.content === 'milky') {
+                                           
+    else if (command === 'milky') {
         message.channel.send('`\ hnji aapka appy\`');
     }
 
@@ -283,6 +283,7 @@ client.on('messageCreate', message => {
       }*/
 
 });
+
 
 
 client.on('messageDelete', message => {

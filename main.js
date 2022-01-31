@@ -3,7 +3,7 @@ const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
 //const ms = require('ms'); //alt
 //const { timeSpan } = ms('2 days'); //alt
-
+const mongoose = require('mongoose');
 const { MessageEmbed: RichEmbed } = require("discord.js");
 
 const bot = new Client({
@@ -132,6 +132,9 @@ client.on('guildMemberAdd', async member => {
 
 */
 
+
+//.addField('Status', message.author.presence.status)
+
 client.on('messageCreate', message => {
     if (message.content === prefix + 'ping') {
 
@@ -249,11 +252,11 @@ client.on('messageCreate', message => {
         client.commands.get('unban').execute(message, args, Discord);
     }
 
-    else if (command === 'appy') {
+    else if (message.content === 'appy') {
         message.channel.send('`\ hnji aapki milky\`');
     }
 
-    else if (command === 'dakki') {
+    else if (message.content === 'dakki') {
         message.channel.send('`\ guu hai tu\`');
     }
 
@@ -269,7 +272,7 @@ client.on('messageCreate', message => {
         client.commands.get('unmute').execute(message, args, Discord);
     }
 
-    else if (command === 'milky') {
+    else if (message.content === 'milky') {
         message.channel.send('`\ hnji aapka appy\`');
     }
 
@@ -288,10 +291,10 @@ client.on('messageDelete', message => {
     if (message.author.bot) return;
     if (message.mentions.users.bot) return;
     if (message.mentions.has(client.user.id)) return;
-   
+
     if (message.mentions.users.first()) {
-       
-    
+
+
         const lol = new Discord.MessageEmbed()
             .setColor('#fb1239')
             .setDescription(`${message.author} ghost pinged ${message.mentions.users.first()}`)
@@ -338,8 +341,130 @@ client.on('messageDelete', message => {
 
 }
 
+});*/
+mongoose.connect(process.env.MONGODB_SRV, {
 
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useFindAnyModify: false
+
+
+}).then(() => {
+    console.log('connected to the database');
+}).catch((err) => {
+    console.log(err);
+});
+
+
+
+/*client.on('guildMemberRemove', member => {
+    console.log(`${member.user.tag} left the guild... but was it of their own free will?`);
 });*/
 
+/*
+client.on('guildBanAdd', async ban => {
+    console.log(`${ban.user.tag} got hit with the swift hammer of justice in the guild ${ban.guild.name}.`);
+});*/
+
+/*
+function getUserFromMention(mention) {
+    if (!mention) return;
+
+    if (mention.startsWith('<@') && mention.endsWith('>')) {
+        mention = mention.slice(2, -1);
+
+        if (mention.startsWith('!')) {
+            mention = mention.slice(1);
+        }
+
+        return client.users.cache.get(mention);
+    }
+} */
+/*
+const { MessageMentions: { USERS_PATTERN } } = require('discord.js');
+
+function getUserFromMention(mention) {
+    // The id is the first and only match found by the RegEx.
+    const matches = mention.match(USERS_PATTERN);
+
+    // If supplied variable was not a mention, matches will be null instead of an array.
+    if (!matches) return;
+
+    // The first element in the matches array will be the entire mention, not just the ID,
+    // so use index 1.
+    const id = matches[1];
+
+    return client.users.cache.get(id);
+
+
+} */
+
+
+
+//reply(`Server name: ${guild.name}\nTotal members: ${guild.memberCount}`);
+
+//`${executor.tag}` who issued the command.
+
+
+/*
+args.slice(2).join(" ")  args.slice(2).join(" ") means we're taking all the arguments including and after the second argument. 
+An argument is just a word or number.
+*/
+
+
+
+/*message.reply('Invalid command')
+  .then(msg => {
+    setTimeout(() => msg.delete(), 10000)
+  }) msg delete timeout  */
+
+
+
+/*
+const { MessageEmbed } = require('discord.js');
+
+client.on('message', async (message) => {
+    if (!message.guild || message.author.bot || message.member.hasPermission('MANAGE_MESSAGES')) return;
+    let invs = [];
+    await message.guild.fetchInvites().then(inv => {
+        inv.forEach(invites => {
+            invs.push(invites?.code);
+        });
+    });
+    if (message.guild.fetchVanityData?.code) invs.push(message.guild.fetchVanityData?.code)
+
+    for (let i of ['discord.gg/', 'discord.com/invite/']) {
+        if (message.content.includes(i)) {
+            if (!invs.length) {
+                message.delete();
+                return message.reply(
+                    new MessageEmbed()
+                        .setDescription(`**Please do not send links to other servers!**`)
+                        .setColor('RED')
+                        .setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                        .setTimestamp()
+                )
+            }
+
+            let args = message.content.split(i);
+            args.shift();
+            args[0].split(/ +/);
+
+            for (let arg of args) {
+                if (!invs.includes(arg)) {
+                    message.delete();
+                    return message.reply(
+                        new MessageEmbed()
+                            .setDescription(`**Please do not send links to other servers!**`)
+                            .setColor('RED')
+                            .setFooter(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                            .setTimestamp()
+                    )
+                }
+            }
+        }
+    }
+})
+*/
 
 client.login(process.env.TOKEN);

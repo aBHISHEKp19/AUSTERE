@@ -38,12 +38,12 @@ module.exports = {
                 //.addField("User Age", `${membertarger.userAge}`)
                 //.addField("User ID:", `${membertarger.id}`)
                 .setThumbnail(membertarger.displayAvatarURL({ dynamic: true }))
-
+                .addField("User Age:", membertarger.userAge)
                 //.addField("Moderator", `${author.username}`)
 
                 //.setImage('https://i.pinimg.com/550x/9c/4b/08/9c4b08ecfeb8bb750e89dfba3e0aa08b.jpg')
 
-                .setFooter(`User ID: ${membertarger.id}`)
+                .setFooter(`User ID: ${membertarger.id}`)("Moderator:", `${author.username}`)
                 .setTimestamp();
 
             message.channel.send({ embeds: [newEmbed] });

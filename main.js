@@ -3,7 +3,8 @@ const { Client } = require("discord.js");
 const { Intents } = require('discord.js');
 //const ms = require('ms'); //alt
 //const { timeSpan } = ms('2 days'); //alt
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');*/
+
 const { MessageEmbed: RichEmbed } = require("discord.js");
 
 const bot = new Client({
@@ -129,10 +130,7 @@ client.on('guildMemberAdd', async member => {
         return member.guild.channels.send({ embeds: [newEmbed] });
     }
 })
-
 */
-
-
 //.addField('Status', message.author.presence.status)
 
 client.on('messageCreate', message => {
@@ -341,7 +339,7 @@ client.on('messageDelete', message => {
 
 }
 
-});*/
+});*/ /*
 mongoose.connect(process.env.MONGODB_SRV, {
 
     useNewUrlParser: true,
@@ -353,7 +351,7 @@ mongoose.connect(process.env.MONGODB_SRV, {
     console.log('connected to the database');
 }).catch((err) => {
     console.log(err);
-});
+});   */
 
 
 

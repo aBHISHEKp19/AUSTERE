@@ -187,7 +187,7 @@ client.on('messageCreate', message => {
 
 
     if (message.content === prefix + 'stats') {
-        return message.reply(`Server count: ${client.guilds.cache.size}.`);
+        return message.reply(`Server count: ${client.guilds.cache.size}.\nUser count: ${client.users.cache.size} users\nChannels: ${client.channels.cache.size} channels`);
     }
 
 

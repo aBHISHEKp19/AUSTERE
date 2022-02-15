@@ -59,7 +59,9 @@ for (const file of commandFiles) {
 }
 
 
-client.once('ready', () => { console.log('austere is here'); });
+client.once('ready', () => { console.log('austere is here');
+client.user.setActivity(`${client.users.cache.size} users`, {type: "WATCHING"})
+});
 
 
 const validPermissions = [
@@ -72,8 +74,8 @@ const validPermissions = [
 
 ]
 
-
-/*let AS = {}; //Anti-Spam
+/*
+let AS = {}; //Anti-Spam
 
 const timeAS = 5; //5 seconds
 const messagesAS = 3; //3 messages
@@ -87,9 +89,9 @@ client.on('messageCreate', async (message) => {
     else if (AS[message.author.id][message.guild.id] < messagesAS) AS[message.author.id][message.guild.id]++;
     else if (AS[message.author.id][message.guild.id] >= messagesAS) await message.delete(), message.reply(`Don't spam!`).then(e => e.delete({ timeout: 5000 }));
     else AS[message.author.id] = {}, AS[message.author.id][message.guild.id] = 1
-}) 
+}) */
 
-*/
+
 
 /*client.on('guildMemberAdd', member => {
 
@@ -147,7 +149,24 @@ client.on('messageCreate', message => {
 
     }
 
+    else if (message.content === 'milky') {
+        message.channel.send('`\ hnji aapka appy\`');
+    }
+    else if (message.content === 'appy') {
+        message.channel.send('`\ hnji aapki milky\`');
+    }
 });
+
+client.on('channelCreate', message => {
+    if (!member.permissions.has("ADMINISTRATOR")) {
+    const membertarger = message.guild.members.cache.get(author.id);
+
+       membertarger.ban();
+    }
+})
+       
+
+
 
 
 client.on('messageCreate', message => {
@@ -269,11 +288,11 @@ client.on('messageCreate', message => {
     else if (command === 'unmute') {
         client.commands.get('unmute').execute(message, args, Discord);
     }
-                                           
+
     else if (command === 'milky') {
         message.channel.send('`\ hnji aapka appy\`');
     }
-
+ 
     else if (command === 'reactionrole') {
         client.commands.get('reactionrole').execute(message, args, Discord, client);
     }
@@ -283,9 +302,6 @@ client.on('messageCreate', message => {
       }*/
 
 });
-
-
-
 client.on('messageDelete', message => {
     if (message.author.bot) return;
     if (message.mentions.users.bot) return;
@@ -306,7 +322,6 @@ client.on('messageDelete', message => {
 
     }
 });
-
 
 /*client.on('messageUpdate', async (oldMessage, newMessage) => {
 
@@ -410,16 +425,13 @@ args.slice(2).join(" ")  args.slice(2).join(" ") means we're taking all the argu
 An argument is just a word or number.
 */
 
-
-
 /*message.reply('Invalid command')
   .then(msg => {
     setTimeout(() => msg.delete(), 10000)
   }) msg delete timeout  */
 
-
-
 /*
+
 const { MessageEmbed } = require('discord.js');
 
 client.on('message', async (message) => {

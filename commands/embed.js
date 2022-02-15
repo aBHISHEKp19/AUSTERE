@@ -21,6 +21,7 @@ module.exports = {
 
                 // { name: 'hello', value: 'how are you' },
                // { name: 'Inline field title', value: 'Some value here', inline: true },
+               //.addField(`**Type**`,`${channel.type}`) 
             )
 
 

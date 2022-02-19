@@ -22,7 +22,7 @@ module.exports = {
                 .addField("ID Created:", `${membertarger.user.createdAt}`)
                 .addField("Joined the server on:", `${membertarger.joinedAt}`)
                 .setThumbnail(membertarger.displayAvatarURL({ dynamic: true }))
-                .setFooter(`User ID: ${membertarger.id}`)
+                .setFooter(`User ID: ${membertarger.id} \nPunisher: ${message.author.tag}`)
                 .setTimestamp();
 
             message.channel.send({ embeds: [newEmbed] });

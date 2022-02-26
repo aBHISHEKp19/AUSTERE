@@ -149,7 +149,7 @@ client.on('messageCreate', message => {
 
     }
 
-    if (message.content.has(client.user.id)) {
+    if (message.content === "client.user.id") {
         message.reply(`AUSTERE AT YOUR SERVICE \nRun &help command to see all the bot features`)
     }
 
@@ -163,12 +163,12 @@ client.on('messageCreate', message => {
 });
 
 client.on('messageCreate', message => {
-    if (message.content === prefix + 'ping') {
+    if (message.content === prefix + 'help') {
 
         const helpEmbed = new Discord.MessageEmbed()
 
             .setColor('RANDOM')
-            .setTitle('**Available `AUSTERE` COMMANDS**')
+            .setTitle('**Available `AUSTERE` commands**')
 
             //.setURL 
 
@@ -176,19 +176,19 @@ client.on('messageCreate', message => {
             //.setAuthor(`Weather forecast for ${current.observationpoint}`)
             //.setThumbnail(current.imageUrl)
 
-            .addField('KICK', 'Kicks a user `&kick @userid/username`', true)
-            .addField('BAN', 'Bans a user' `&ban @userid/username`, true)
-            .addField('TIMED MUTE', 'Temporarily mutes a user `&mute @username 10s/2hrs/2days`', true)
-            .addField('PURGE', 'Deletes max 100 messages not older than 14 days' `&purge 10`, true)
-            .addField('WEATHER', 'Weather forecast of your location' `&weather location`, true)
-            .addField('PING', `shows the message/API latency`, true)
-            .addField('RPS', 'rock-papers-scissors' `&rps`, true)
-            .addField('STATS', 'Statistics of the bot `&stats`', true)
+            .addField('KICK', "Kicks a user `&kick @userid/username`", true)
+            .addField('BAN', "Bans a user' `&ban @userid/username`", true)
+            .addField('TIMED MUTE', "Temporarily mutes a user `&mute @username 10s/2hrs/2days`", true)
+            .addField('PURGE', "Deletes max 100 messages not older than 14 days `&purge 10`", true)
+            .addField('WEATHER', "Weather forecast of your location `&weather location`", true)
+            .addField('PING', "shows the message/API latency `&ping`", true)
+            .addField('RPS', "rock-papers-scissors `&rps`", true)
+            .addField('STATS', "Statistics of the bot `&stats`", true)
 
             //.addField(`**Type**`,`${channel.type}`) 
             //.setImage('https://i.pinimg.com/550x/9c/4b/08/9c4b08ecfeb8bb750e89dfba3e0aa08b.jpg')
 
-            .setFooter(`GUILD:${Client.guild.name} Requester:'${message.author.tag}\n Creator:appy#1511 `)
+            .setFooter(` Requester:${message.author.tag}\nCreator:appy#1511 `)
             .setTimestamp();
 
         message.channel.send({ embeds: [helpEmbed] });
@@ -306,9 +306,7 @@ client.on('messageCreate', message => {
         client.commands.get('unban').execute(message, args, Discord);
     }
 
-    else if (command === 'help') {
-        client.commands.get('help').execute(message, args, Discord);
-    }
+
 
     else if (command === 'appy') {
         message.channel.send('`\ hnji aapki milky\`');

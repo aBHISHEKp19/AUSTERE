@@ -153,12 +153,12 @@ client.on('messageCreate', message => {
         message.reply(`AUSTERE AT YOUR SERVICE \nRun &help command to see all the bot features`)
     }
 
-    else if (message.content === 'milky') {
+  /*  else if (message.content === 'milky') {
         message.channel.send('`\ hnji aap ka appy\`');
     }
     else if (message.content === 'appy') {
         message.channel.send('`\ hnji aapki milky\`');
-    }
+    } */
 
 });
 

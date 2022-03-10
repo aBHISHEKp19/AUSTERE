@@ -150,7 +150,7 @@ client.on('messageCreate', message => {
     }
 
     if (message.mentions.has(client.user.id)) {
-        message.reply(`**AUSTERE AT YOUR SERVICE**` `\nRun __&help__ command to see the bot features`)
+        message.reply("**`AUSTERE AT YOUR SERVICE`** \n`Run` __**`&help`**__ `command to see the bot features`")
     }
 
   /*  else if (message.content === 'milky') {

@@ -159,6 +159,7 @@ client.on('messageCreate', message => {
     else if (message.content === 'appy') {
         message.channel.send('`\ hnji aapki milky\`');
     } */
+}
 
 });
 

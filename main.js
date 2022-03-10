@@ -150,8 +150,8 @@ client.on('messageCreate', message => {
     }
 
     if (message.mentions.has(client.user.id)) {
-        message.reply("**`AUSTERE AT YOUR SERVICE`** \n`Run` __**`&help`**__ `command to see the bot features`")
-    }
+        message.reply("**`AUSTERE AT YOUR SERVICE`** \n`Run`**&help**`command to see the bot features`")
+    
 
   /*  else if (message.content === 'milky') {
         message.channel.send('`\ hnji aap ka appy\`');

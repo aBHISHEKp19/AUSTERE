@@ -55,7 +55,7 @@ module.exports = {
                 embed.description = `I chose ${botMove.txt}! ${win == 0 ? 'You lost!' : (win == 1 ? 'We tied!' : 'You win!')} (${userMove.emoji} ${win == 0 ? '<' : (win == 1 ? '=' : '>')} ${botMove.emoji})`;
                 
                 let components = rpsMsg.components
-                // Disabling all buttons
+                // Disabling all buttonsnode
                 components[0].components.forEach(comp => {
                     if (comp.customId == interaction.customId) { comp.disabled = true; comp.style = 'SECONDARY' }
                     else comp.disabled = true

@@ -65,6 +65,7 @@ client.once('ready', () => {
 });
 
 
+
 const validPermissions = [
 
     "ADMINISTRATOR",
@@ -150,17 +151,18 @@ client.on('messageCreate', message => {
     }
 
 
-    
 
-  /*  else if (message.content === 'milky') {
-        message.channel.send('`\ hnji aap ka appy\`');
-    }
-    else if (message.content === 'appy') {
-        message.channel.send('`\ hnji aapki milky\`');
-    } */
+
+    /*  else if (message.content === 'milky') {
+          message.channel.send('`\ hnji aap ka appy\`');
+      }
+      else if (message.content === 'appy') {
+          message.channel.send('`\ hnji aapki milky\`');
+      } */
 
 
 });
+
 
 client.on('messageCreate', message => {
     if (message.content === prefix + 'help') {
@@ -188,7 +190,7 @@ client.on('messageCreate', message => {
             //.addField(`**Type**`,`${channel.type}`) 
             //.setImage('https://i.pinimg.com/550x/9c/4b/08/9c4b08ecfeb8bb750e89dfba3e0aa08b.jpg')
 
-            .setFooter(` Requester:${message.author.tag}\nCreator:appy#1511 `)
+            .setFooter(` Requester:${message.author.tag}\nCreator:appy#6049 `)
             .setTimestamp();
 
         message.channel.send({ embeds: [helpEmbed] });
@@ -232,7 +234,7 @@ client.on('messageCreate', message => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const ARGS = message.content.substring(prefix.length).split(" ");
-    const command = args.shift().toLowerCase();
+    const command = args.shift().toLowerCase();           `5   s  `
 
     switch (ARGS[0]) {
         case 'hello':
@@ -291,6 +293,10 @@ client.on('messageCreate', message => {
 
     if (command === 'hi') {
         client.commands.get('hi').execute(message, Discord); //embed
+    }
+
+    if (command === 'dm') {
+        client.commands.get('dm').execute(message, Discord); //embed
     }
 
     if (command === 'weather') {

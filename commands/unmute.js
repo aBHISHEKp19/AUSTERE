@@ -12,7 +12,7 @@ module.exports = {
 
             if (target) {
 
-                let mainRole = message.guild.roles.cache.find(role => role.name === '╭───𒌋「🜲・MEMBERS」');
+                let mainRole = message.guild.roles.cache.find(role => role.name === '╭───𒌋「🜲・MEMBERS」' ||'「MEMBERS」');
                 let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 

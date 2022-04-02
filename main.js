@@ -351,7 +351,7 @@ client.on('messageDelete', message => {
     if (message.author.bot) return;
     if (message.mentions.users.bot) return;
     if (message.mentions.has(client.user.id)) return;
-
+    if (message.content.startsWith(':')) return;
     if (message.mentions.users.first()) {
 
 

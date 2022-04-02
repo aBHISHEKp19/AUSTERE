@@ -165,6 +165,12 @@ client.on('messageCreate', message => {
 
 
 client.on('messageCreate', message => {
+
+if(message.content === "<@909729562617872445> help"){
+    message.channel.send('yes');
+}
+
+
     if (message.content === prefix + 'help') {
 
         const helpEmbed = new Discord.MessageEmbed()

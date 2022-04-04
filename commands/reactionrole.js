@@ -8,21 +8,21 @@ module.exports = {
 
         const channel = '928278615181897748';
         const appyrole = message.guild.roles.cache.find(role => role.name === "Appy");
-        const milkyrole = message.guild.roles.cache.find(role => role.name === "Milky");
+        const milkyrole = message.guild.roles.cache.find(role => role.name === "");
         const appyemoji = ':blue_heart:';
-        const milkyemoji = ':heart:';
+        const abhiemoji = ':heart:';
 
         const roleembed = new MessageEmbed()
             .setColor('#e42643')
             .setTitle('React to get your role')
             .setDescription('Choose any role you wish for amongst the below ones \n\n'
                 + `${appyemoji} for appy role \n`
-                + `${milkyemoji} for milky role`);
+                + `${abhiemoji} for  role`);
 
 
         let newMessageEmbed = await message.channel.send({ embeds: [roleembed] });
         newMessageEmbed.react(appyemoji);
-        newMessageEmbed.react(milkyemoji);
+        newMessageEmbed.react(abhiemoji);
         const { Client } = require("discord.js");
 
 
@@ -36,7 +36,7 @@ module.exports = {
                 if (reaction.emoji.name === appyemoji) {
                     await reaction.message.guild.members.cache.get(user.id).roles.add(appyrole);
                 }
-                if (reaction.emoji.name === milkyemoji) {
+                if (reaction.emoji.name === abhiemoji) {
                     await reaction.message.guild.members.cache.get(user.id).roles.add(milkyrole);
                 }
             }
@@ -55,7 +55,7 @@ module.exports = {
                 if (reaction.emoji.name === appyemoji) {
                     await reaction.message.guild.members.cache.get(user.id).roles.remove(appyrole);
                 }
-                if (reaction.emoji.name === milkyemoji) {
+                if (reaction.emoji.name === abhiemoji) {
                     await reaction.message.guild.members.cache.get(user.id).roles.remove(milkyrole);
                 }
             }

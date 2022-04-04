@@ -151,7 +151,9 @@ client.on('messageCreate', message => {
     }
 
 
-
+    else if(message.mentions.has(client.user.id) + 'help') {
+        message.channel.send('yes?')
+    }
 
     /*  else if (message.content === 'milky') {
           message.channel.send('`\ hnji aap ka appy\`');
@@ -165,10 +167,6 @@ client.on('messageCreate', message => {
 
 
 client.on('messageCreate', message => {
-
-if(message.content === "<@909729562617872445> help"){
-    message.channel.send('yes');
-}
 
 
     if (message.content === prefix + 'help') {
@@ -240,7 +238,7 @@ client.on('messageCreate', message => {
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const ARGS = message.content.substring(prefix.length).split(" ");
-    const command = args.shift().toLowerCase();           `5   s  `
+    const command = args.shift().toLowerCase();           
 
     switch (ARGS[0]) {
         case 'hello':
@@ -262,15 +260,7 @@ client.on('messageCreate', message => {
               message.author.send({ embeds: [hello] });*/
             message.author.send("hows you")
             break;
-        case 'milkyy':
-
-            const helo = new RichEmbed()
-                .setTitle('meri milky ho')
-                .setColor('RANDOM')
-                .setTimestamp();
-            message.author.send({ embeds: [helo] });
-            //   message.author.send("meri milky ho")
-            break;
+   
     }
 
     if (command === 'purge') {

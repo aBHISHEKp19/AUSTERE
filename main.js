@@ -151,10 +151,6 @@ client.on('messageCreate', message => {
     }
 
 
-    else if(message.mentions.has(client.user.id) + 'help') {
-        message.channel.send('yes?')
-    }
-
     /*  else if (message.content === 'milky') {
           message.channel.send('`\ hnji aap ka appy\`');
       }

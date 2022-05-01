@@ -28,7 +28,7 @@ module.exports = {
                         const umm = new Discord.MessageEmbed()
 
                                 .setColor('#40E0D0')
-                                .setTitle("perm leke aao pehle <:abhi_ka_pizza:844790630784827412> ")
+                                .setTitle("manage msgs ki perm leke aao pehle <:abhi_ka_pizza:844790630784827412> ")
                         message.channel.send({ embeds: [umm] });
                         // message.channel.send("`\perm leke aao pehle😊\`")
                 }

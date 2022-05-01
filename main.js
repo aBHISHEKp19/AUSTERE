@@ -150,15 +150,6 @@ client.on('messageCreate', message => {
 
     }
 
-
-    /*  else if (message.content === 'milky') {
-          message.channel.send('`\ hnji aap ka appy\`');
-      }
-      else if (message.content === 'appy') {
-          message.channel.send('`\ hnji aapki milky\`');
-      } */
-
-
 });
 
 

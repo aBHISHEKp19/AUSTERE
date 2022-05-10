@@ -1,4 +1,4 @@
-const { MessageEmbed: RichEmbed } = require("discord.js");
+/*const { MessageEmbed: RichEmbed } = require("discord.js");
 
 const Discord = require('discord.js');
 const { Client } = require("discord.js");
@@ -47,3 +47,4 @@ module.exports = {
     }
 }
 
+*/

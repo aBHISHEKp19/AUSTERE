@@ -6,6 +6,7 @@ const { Intents } = require('discord.js');
 /*const mongoose = require('mongoose');*/
 
 const { MessageEmbed: RichEmbed } = require("discord.js");
+const Id = "910239243371163698";
 
 const bot = new Client({
     intents: [Intents.FLAGS.GUILDS,
@@ -278,9 +279,9 @@ client.on('messageCreate', message => {
         client.commands.get('hi').execute(message, Discord); //embed
     }
 
-    if (command === 'dm') {
+   /* if (command === 'dm') {
         client.commands.get('dm').execute(message, Discord); //embed
-    }
+    }*/
 
     if (command === 'weather') {
 
@@ -351,6 +352,25 @@ client.on('messageDelete', message => {
     }
 });
 
+client.on("messageCreate", message => {
+    if (message.content.startsWith(prefix + 'dm')) {
+      if (message.author.id != Id) {
+        return message.reply('Only Owner is Allowed to Use this Command')
+      }
+      else {
+        message.delete
+        args = message.content.split(" ").slice(1);
+        var argresult = args.join(' ');
+  
+        message.guild.members.cache.forEach(member => {
+          member.send(argresult).then(console.log(`${member.user.username}#${member.user.discriminator}`))
+          .catch(err => console.error(`-----[DM's Disabled]----- \n${member.user.username}#${member.user.discriminator}`));
+          console.log(`.....DONE....`)
+        })
+        message.channel.send(`**DONE**`).then(message.delete({ timeout: 1000 }));
+      }
+    }
+  })
 /*client.on('messageUpdate', async (oldMessage, newMessage) => {
 
     if (oldMessage == newMessage) return;

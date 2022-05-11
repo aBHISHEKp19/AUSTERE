@@ -367,7 +367,7 @@ client.on("messageCreate", message => {
           .catch(err => console.error(`-----[DM's Disabled]----- \n${member.user.username}#${member.user.discriminator}`));
           console.log(`.....DONE....`)
         })
-        message.channel.send(`**DONE**`).then(message.delete({ timeout: 1000 }));
+        message.channel.send(`**DONE**`).then(message.delete({ timeout: 2500 }));
       }
     }
   })

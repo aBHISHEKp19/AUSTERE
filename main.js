@@ -360,9 +360,8 @@ client.on("messageCreate", message => {
         else {
             message.delete
             args = message.content.split(" ").slice(1);
-            var argresult
-             = args.join(' ');
-            if (!args[0]) { return message.channel.send("provide a msg to be sent");
+            var argresult  = args.join(' ');
+            if (!args[0]) {  message.channel.send("provide a msg to be sent");
          }
             message.guild.members.cache.forEach(member => {
                 member.send(argresult).then(console.log(`${member.user.username}#${member.user.discriminator}`))

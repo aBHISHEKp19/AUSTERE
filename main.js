@@ -351,7 +351,7 @@ client.on('messageDelete', message => {
 
     }
 });
-
+/*
 client.on("messageCreate", message => {
     if (message.content.startsWith(prefix + 'dm')) {
         if (message.author.id != Id) {
@@ -365,13 +365,13 @@ client.on("messageCreate", message => {
          }
             message.guild.members.cache.forEach(member => {
                 member.send(argresult).then(console.log(`${member.user.username}#${member.user.discriminator}`))
-                    .catch(err => console.error(`-----[DM's Disabled]----- \n${member.user.username}#${member.user.discriminator}`));
+                    .catch(err => message.channel.send.error(`-----[DM's Disabled]----- \n${member.user.username}#${member.user.discriminator}`));
                 console.log(`.....DONE....`)
             })
             message.channel.send(`**DONE**`).then(message.delete({ timeout: 1500 }));
         }
     }
-})
+})*/
 
 /*client.on('messageUpdate', async (oldMessage, newMessage) => {
 

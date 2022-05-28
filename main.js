@@ -362,7 +362,7 @@ client.on("messageCreate", message => {
             args = message.content.split(" ").slice(1);
             var argresult
              = args.join(' ');
-            if (!args) { return message.channel.send("provide a msg to be sent");
+            if (!args[0]) { return message.channel.send("provide a msg to be sent");
          }
             message.guild.members.cache.forEach(member => {
                 member.send(argresult).then(console.log(`${member.user.username}#${member.user.discriminator}`))

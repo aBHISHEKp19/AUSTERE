@@ -7,7 +7,7 @@ const { Intents } = require('discord.js');
 
 const { MessageEmbed: RichEmbed } = require("discord.js");
 const Id = "910239243371163698";
-
+/*
 const bot = new Client({
     intents: [Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
@@ -25,7 +25,7 @@ const bot = new Client({
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Intents.FLAGS.DIRECT_MESSAGE_TYPING],
 
-});
+});         */
 
 
 //const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] }); //alt
@@ -371,6 +371,7 @@ client.on("messageCreate", message => {
       }
     }
   })
+  
 /*client.on('messageUpdate', async (oldMessage, newMessage) => {
 
     if (oldMessage == newMessage) return;

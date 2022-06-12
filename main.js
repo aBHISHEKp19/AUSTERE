@@ -232,7 +232,7 @@ client.on('messageCreate', message => {
         case 'hello':
 
             const llo = new RichEmbed()
-                .setTitle('chal nital tutiya')
+                .setTitle('hi cutie <:UwU:940214165438607400>')
                 .setColor('RANDOM')
                 .setTimestamp();
             message.author.send({ embeds: [llo] });

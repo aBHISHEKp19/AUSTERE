@@ -6,8 +6,7 @@ module.exports = {
 
         const member = message.mentions.users.first() || message.mentions.members.first();
 
-
-        if (message.member.permissions.has("ADMINISTRATOR")) {
+        if (message.member.permissions.has("ADMINISTRATOR", "BAN_MEMBERS")) {
 
             if (!args[0]) return message.reply("pls enter member id to be banned");
 

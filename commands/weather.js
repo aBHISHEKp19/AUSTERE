@@ -25,7 +25,7 @@ module.exports = {
                 .addField('Timezone', `UTC${location.timezone}`, true)
                 .addField('Degree Type', 'Celsius', true)
                 .addField('Temperature', `${current.temperature}°`, true)
-                .addField('Wind', current.winddisplay, true)
+                .addField('Wind', $current.winddisplay, true)
                 .addField('Feels like', `${current.feelslike}°`, true)
                 .addField('Humidity', `${current.humidity}%`, true)
 

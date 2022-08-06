@@ -30,7 +30,8 @@ const bot = new Client({
 
 //const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] }); //alt
 
-const { MessageEmbed } = require('discord.js');
+    const { MessageEmbed } = require('discord.js');
+    
 
 require('dotenv').config();
 

@@ -9,10 +9,13 @@ module.exports = {
         if (message.member.permissions.has("ADMINISTRATOR", "BAN_MEMBERS")) {
 
             if (!args[0]) return message.reply("pls enter member id to be banned");
-
+           // const rsn = message.get(args[1]);
+            //const ssf = new RichEmbed()
+           // .setDescription(`YOU WERE BANNED IN ${guild.name}`)
+           // .addField("REASON OF BAN->", rsn);
             const membertarger = message.guild.members.cache.get(args[0]) || message.guild.members.cache.get(member.id);
 
-           // if (!membertarger) return message.channel.send("uhhun");
+            // if (!membertarger) return message.channel.send("uhhun");
 
             const newEmbed = new Discord.MessageEmbed()
 
@@ -27,7 +30,7 @@ module.exports = {
             message.channel.send({ embeds: [newEmbed] });
             // message.channel.send(`banned <@${membertarger.id}> `)
             //  if (membertarger) return message.channel.send('USER ALREADY BANNED');
-            membertarger.ban();
+            membertarger.ban();//.then(membertarger.send({ embeds: [ssf] }));
 
 
         }
